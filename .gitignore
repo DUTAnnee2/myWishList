@@ -1,0 +1,8 @@
+# Unwanted directories #
+.idea
+out
+
+# SystemFiles #
+.DS_Store
+# ProjectFiles #
+*.iml
