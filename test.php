@@ -7,7 +7,7 @@ use mywishlist\models\Liste;
 $db = new DB();
 $db->addConnection( [
     'driver'    => 'mysql',
-    'host'      => '127.0.0.1',
+    'host'      => 'localhost',
     'database'  => 'aled',
     'username'  => 'root',
     'password'  => 'root',
