@@ -4,8 +4,14 @@ namespace mywishlist\views;
 
 class ListView
 {
+    /**
+     * Generates HTML code to diplay lists
+     * @param $lists
+     * @return string
+     */
     public function generateLists($lists): string
     {
+        // Base HTML code
         $html = <<<HTML
 <!doctype html>
 <html lang="fr">
@@ -17,11 +23,15 @@ class ListView
 </head>
 <body>
 HTML;
+        // Add every lists to the HTML code
         foreach ($lists as $list) {
             $html .= $list->description;
         }
+
+        // Close tags
         $html .= "</body></html>";
 
+        // Return the HTML code to the controller
         return $html;
     }
 }

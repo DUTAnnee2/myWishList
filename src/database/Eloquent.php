@@ -6,6 +6,11 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Eloquent
 {
+    /**
+     * Stats eloquent
+     * @param $file
+     * @return void
+     */
     public static function start($file)
     {
         $capsule = new Capsule;
