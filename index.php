@@ -3,31 +3,29 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 require 'vendor/autoload.php';
 
-$app = new \Slim\App;
+\mywishlist\database\Eloquent::start(__DIR__.DIRECTORY_SEPARATOR."src".DIRECTORY_SEPARATOR."conf".DIRECTORY_SEPARATOR."conf.ini");
 
+$container = new Slim\Container(['settings' => ['displayErrorDetails' => true]]);
+$app = new Slim\App($container);
 
 $app->get('/listes',
     function (Request $rq, Response $rs, $args):Response {
-        $name = $args['name'];
-        $rs->getBody()->write("Hello, $name");
-        return $rs;
+        $controller = new mywishlist\controllers\ListController();
+        return $controller->displayAll($rq, $rs, $args);
     }
 );
 
 $app->get('/listes/{id}',
     function (Request $rq, Response $rs, $args):Response {
-        $id = $args['name'];
-        $rs->getBody()->write("Hello, $id");
         return $rs;
     }
 );
 
 $app->get('/items/{id}}',
     function (Request $rq, Response $rs, $args):Response {
-        $id = $args['name'];
-        $rs->getBody()->write("Hello, $id");
         return $rs;
     }
 );
 
 $app->run();
+?>

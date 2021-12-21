@@ -1,6 +1,6 @@
 <?php
 namespace mywishlist\models;
-class liste extends \Illuminate\Database\Eloquent\Model
+class Liste extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'liste';
     protected $primaryKey = 'no';
@@ -10,3 +10,4 @@ class liste extends \Illuminate\Database\Eloquent\Model
         return $this->hasMany('mywishlist\models\Item','id');
     }
 }
+?>
