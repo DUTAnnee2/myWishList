@@ -17,7 +17,8 @@ $app->get('/listes',
 
 $app->get('/listes/{id}',
     function (Request $rq, Response $rs, $args):Response {
-        return $rs;
+        $controller = new mywishlist\controllers\ListController();
+        return $controller->displayById($rq, $rs, $args);
     }
 );
 

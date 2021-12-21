@@ -4,7 +4,8 @@ namespace mywishlist\views;
 
 class ListView
 {
-    public function generateLists($lists): string {
+    public function generateLists($lists): string
+    {
         $html = <<<HTML
 <!doctype html>
 <html lang="fr">
@@ -17,7 +18,7 @@ class ListView
 <body>
 HTML;
         foreach ($lists as $list) {
-            $html .= $list->no;
+            $html .= $list->description;
         }
         $html .= "</body></html>";
 
