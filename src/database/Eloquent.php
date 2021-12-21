@@ -7,7 +7,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 class Eloquent
 {
     /**
-     * Stats eloquent
+     * Starts eloquent
      * @param $file
      * @return void
      */

@@ -1,0 +1,33 @@
+.form-container {
+    width: max-content;
+    margin: 0 auto;
+    padding-top: 100px;
+
+    .id-form {
+        display: flex;
+        flex-direction: row;
+
+        .form-input {
+            background-color: $color-base;
+            width: 100%;
+            height: 50px;
+            border: 1px solid $color-base;
+            border-radius: 5px 0px 0px 5px;
+            padding: 0 10px 0 0;
+            margin-right: 10px;
+
+            &:focus {
+                outline: none;
+            }
+
+        }
+
+        .form-submit {
+            padding: 5px 15px;
+            background: $color-purple;
+            border: 0 none;
+            cursor: pointer;
+            border-radius: 0px 5px 5px 0px;
+        }
+    }
+}

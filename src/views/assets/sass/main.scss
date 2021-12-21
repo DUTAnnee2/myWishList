@@ -1,0 +1,68 @@
+/* == POPPINS IMPORT GOOGLE FONTS == */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+/* == GLOBAL VARIABLES == */
+@import 'vars';
+
+/* == GLOBAL HEADER == */
+@import 'header';
+
+/* == GLOBAL LISTS == */
+@import 'lists';
+
+
+/* === GENERAL & RESET === */
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+    color: $color-white;
+}
+
+a, a:visited {
+    text-decoration: none; 
+    decoration: none; 
+    text-decoration: none;
+    color: inherit;
+}
+
+strong {
+    font-weight: 600;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7F7F7;
+}
+
+
+/* === Containers === */
+.container-large {
+    max-width: 1600px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.container-min {
+    max-width: 1000px;
+    width: 90%;
+    margin:  0 auto;
+}
+
+/** == TEXT PURPLE COLORIZE == */
+
+.text-purple {
+    color: $color-purple;
+}
