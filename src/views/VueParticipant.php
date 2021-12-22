@@ -5,10 +5,19 @@ class VueParticipant
 {
     private $list;
 
+    /**
+     * Classic constructor
+     * @param $data
+     */
     public function __construct($data){
         $this->list = $data;
     }
-    //Display a list
+
+    /**
+     * Display a list
+     * @param $liste
+     * @return string
+     */
     private function displayListe($liste)
     {
         $html = "<tr>";
@@ -19,7 +28,12 @@ class VueParticipant
         return $html;
 
     }
-    //Display list and its items
+
+    /**
+     * Display list and its items
+     * @param $liste
+     * @return string
+     */
     private function displayListeItems($liste)
     {
         $html = "<th>";
@@ -34,7 +48,12 @@ class VueParticipant
         $html.="</tr>";
         return $html;
     }
-    //Dispay item
+
+    /**
+     * Dispay item
+     * @param $item
+     * @return string
+     */
     private function displayItem($item)
     {
         $html = "<tr>";
@@ -46,7 +65,11 @@ class VueParticipant
         return $html;
     }
 
-    //Generate render
+    /**
+     * Generate render HTML code
+     * @param $type
+     * @return string
+     */
     public function render($type)
     {
         $html = <<<HTML
@@ -81,6 +104,12 @@ class VueParticipant
     </header>
 
     <main>
+            <div class="form-container">
+            <form action="" method="get" class="id-form">
+                <input type="text" placeholder="ID de votre liste" class="form-input">
+                <input type="submit" value="CHERCHER" class="form-submit">
+            </form>
+        </div>
 <table>
 HTML;
         switch ($type){

@@ -11,25 +11,6 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 $container = new Slim\Container(['settings' => ['displayErrorDetails' => true]]);
 $app = new Slim\App($container);
 
-$app->get('/listes',
-    function (Request $rq, Response $rs, $args):Response {
-        $controller = new mywishlist\controllers\ListController();
-        return $controller->displayAll($rq, $rs, $args);
-    }
-);
-
-$app->get('/listes/{id}',
-    function (Request $rq, Response $rs, $args):Response {
-        $controller = new mywishlist\controllers\ListController();
-        return $controller->displayById($rq, $rs, $args);
-    }
-);
-
-$app->get('/items/{id}',
-    function (Request $rq, Response $rs, $args):Response {
-        return $rs;
-    }
-);
 $app->get('/participant/{type}',
     function (Request $rq, Response $rs, $args):Response {
         $type = intval($args['type']);
