@@ -60,7 +60,7 @@ class VueParticipant
         $html .= "<td>".$item["nom"]."</td>";
         $html .= "<td>".$item["descr"]."</td>";
         $html .= "<td>".$item["tarif"]."</td>";
-        $html .= "<td><img src='../../src/img/".$item["img"]."' alt='item' class='item-image'></td>";
+        $html .= "<td><img src='../../web/img/".$item["img"]."' alt='item' class='item-image'></td>";
         $html .= "</tr>";
         return $html;
     }
@@ -79,7 +79,7 @@ class VueParticipant
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../src/views/assets/css/main.css">
+    <link rel="stylesheet" href="../../web/css/main.css">
     <style>
    
     img{
@@ -99,7 +99,7 @@ class VueParticipant
             <h1>
                 <span>My</span><span class="text-purple">WishList</span>
             </h1>
-            <img src="../../src/views/assets/icons/user.svg" alt="user icon" class="user-icon">
+            <img src="../../web/icons/user.svg" alt="user icon" class="user-icon">
         </nav>
     </header>
 
