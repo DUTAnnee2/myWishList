@@ -20,11 +20,30 @@ class VueParticipant
      */
     private function displayListe($liste)
     {
-        $html = "<tr>";
-        $html .= "<td>".$liste["titre"]."</td>";
-        $html .= "<td>".$liste["description"]."</td>";
-        $html .= "<td>".$liste["expiration"]."</td>";
-        $html .= "</tr>";
+        $html = '<div class="card">';
+        $html .= "<h2>".$liste["titre"]."</h2>";
+        $html .= "<h3>FIN : ".$liste["expiration"]."</h3>";
+        $html .= "<h4>ID : ".$liste["no"]."</h4>";
+        $html .= '<div class="card-description">';
+        $html .= "<p>".$liste["description"]."</p>";
+        $html .= '</div>';
+
+
+        $html .= <<<HTML
+<div class="card-interraction-btns">
+                    <a href="#" class="btn">
+                        <img src="../../web/icons/edit.svg" alt="edit icon">
+                    </a>
+                    <a href="#" class="btn">
+                        <img src="../../web/icons/delete.svg" alt="delete icon">
+                    </a>
+                    <a href="#" class="btn">
+                        <img src="../../web/icons/share.svg" alt="share icon">
+                    </a>
+                    
+                </div>
+            </div>
+HTML;
         return $html;
 
     }
@@ -80,17 +99,6 @@ class VueParticipant
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../web/css/main.css">
-    <style>
-   
-    img{
-    height: 100px;
-    width: auto;
-    }
-    td,tr{
-    border: black 1px solid;
-    color: black;
-    }
-</style>
     <title>MyWishList</title>
 </head>
 <body>
@@ -110,7 +118,7 @@ class VueParticipant
                 <input type="submit" value="CHERCHER" class="form-submit">
             </form>
         </div>
-<table>
+        <div class="card-container container-large">
 HTML;
         switch ($type){
             case 1:
@@ -129,7 +137,7 @@ HTML;
         }
 
             $html .= <<<HTML
-    </table>
+      </div>
       </main>
     </body>
     </html>
