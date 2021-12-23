@@ -1,7 +1,7 @@
 <?php
 
 namespace mywishlist\models;
-class user extends Illuminate\Database\Eloquent\Model
+class User extends Illuminate\Database\Eloquent\Model
 {
     protected $table = 'account';
     protected $primaryKey = 'id';
