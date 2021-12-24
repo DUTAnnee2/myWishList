@@ -1,0 +1,20 @@
+footer {
+    background-color: $color-base;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .user-icon {
+            width: fit-content;
+            height: fit-content;
+            max-width: 50px;
+        }
+    }
+}
+    

@@ -1,6 +1,7 @@
 .card-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -8,6 +9,7 @@
     margin-top: 100px;
     background-color: $color-base;
     max-width: 300px;
+    min-width: 300px;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;

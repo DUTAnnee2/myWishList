@@ -9,7 +9,8 @@ class VueParticipant
      * Classic constructor
      * @param $data
      */
-    public function __construct($data){
+    public function __construct($data)
+    {
         $this->list = $data;
     }
 
@@ -21,11 +22,11 @@ class VueParticipant
     private function displayListe($liste)
     {
         $html = '<div class="card">';
-        $html .= "<h2>".$liste["titre"]."</h2>";
-        $html .= "<h3>FIN : ".$liste["expiration"]."</h3>";
-        $html .= "<h4>ID : ".$liste["no"]."</h4>";
+        $html .= "<h2>" . $liste["titre"] . "</h2>";
+        $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
+        $html .= "<h4>ID : " . $liste["no"] . "</h4>";
         $html .= '<div class="card-description">';
-        $html .= "<p>".$liste["description"]."</p>";
+        $html .= "<p>" . $liste["description"] . "</p>";
         $html .= '</div>';
 
 
@@ -56,15 +57,15 @@ HTML;
     private function displayListeItems($liste)
     {
         $html = "<th>";
-        $html .= "<td>".$liste["titre"]."</td>";
-        $html .= "<td>".$liste["description"]."</td>";
-        $html .= "<td>".$liste["expiration"]."</td>";
+        $html .= "<td>" . $liste["titre"] . "</td>";
+        $html .= "<td>" . $liste["description"] . "</td>";
+        $html .= "<td>" . $liste["expiration"] . "</td>";
         $html .= "</th><tr>";
-        $liste = \mywishlist\models\Item::where('liste_id',"=",$liste["no"])->get()->toArray();
+        $liste = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
         foreach ($liste as $item) {
-           $html.= $this->displayItem($item);
+            $html .= $this->displayItem($item);
         }
-        $html.="</tr>";
+        $html .= "</tr>";
         return $html;
     }
 
@@ -76,10 +77,10 @@ HTML;
     private function displayItem($item)
     {
         $html = "<tr>";
-        $html .= "<td>".$item["nom"]."</td>";
-        $html .= "<td>".$item["descr"]."</td>";
-        $html .= "<td>".$item["tarif"]."</td>";
-        $html .= "<td><img src='../../web/img/".$item["img"]."' alt='item' class='item-image'></td>";
+        $html .= "<td>" . $item["nom"] . "</td>";
+        $html .= "<td>" . $item["descr"] . "</td>";
+        $html .= "<td>" . $item["tarif"] . "</td>";
+        $html .= "<td><img src='../../web/img/" . $item["img"] . "' alt='item' class='item-image'></td>";
         $html .= "</tr>";
         return $html;
     }
@@ -120,31 +121,38 @@ HTML;
         </div>
         <div class="card-container container-large">
 HTML;
-        switch ($type){
+        switch ($type) {
             case 1:
                 foreach ($this->list as $l) {
-                    $html.= $this->displayListe($l);
+                    $html .= $this->displayListe($l);
                 }
                 break;
 
             case 2:
                 foreach ($this->list as $l) {
-                    $html.= $this->displayListeItems($l);
+                    $html .= $this->displayListeItems($l);
                 }
                 break;
             case 3:
-                $html.=$this->displayItem($this->list[0]);
+                $html .= $this->displayItem($this->list[0]);
         }
 
-            $html .= <<<HTML
+        $html .= <<<HTML
       </div>
       </main>
+      <footer>
+        <nav class="container-large">
+            <h1>
+                <span>My</span><span class="text-purple">WishList</span>
+            </h1>
+        </nav>
+    </footer>
     </body>
     </html>
     
     HTML;
 
-    return $html;
+        return $html;
     }
 
 }

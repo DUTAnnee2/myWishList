@@ -13,6 +13,9 @@
 /* == GLOBAL CARDS == */
 @import 'cards';
 
+/* == GLOBAL FOOTER == */
+@import 'footer';
+
 
 /* === GENERAL & RESET === */
 
@@ -20,6 +23,7 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
+    text-align: center;
 
     color: $color-white;
 }
