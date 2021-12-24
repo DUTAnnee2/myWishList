@@ -1,6 +1,7 @@
 /* == POPPINS IMPORT GOOGLE FONTS == */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 /* == GLOBAL VARIABLES == */
+/* === FONT WEIGHT === */
 /* == GLOBAL HEADER == */
 header {
   background-color: #2C2C2C;
@@ -110,6 +111,20 @@ header nav .user-icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.card h2 {
+  font-weight: 400;
+}
+
+.card h3 {
+  font-size: medium;
+  font-weight: 300;
+}
+
+.card h4 {
+  font-weight: 200;
+  color: #A175E8;
 }
 
 .card-description {
