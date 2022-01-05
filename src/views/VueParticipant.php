@@ -56,16 +56,12 @@ HTML;
      */
     private function displayListeItems($liste)
     {
-        $html = "<th>";
-        $html .= "<td>" . $liste["titre"] . "</td>";
-        $html .= "<td>" . $liste["description"] . "</td>";
-        $html .= "<td>" . $liste["expiration"] . "</td>";
-        $html .= "</th><tr>";
-        $liste = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
-        foreach ($liste as $item) {
+
+        $html = $this->displayListe($liste);
+        $l = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
+        foreach ($l as $item) {
             $html .= $this->displayItem($item);
         }
-        $html .= "</tr>";
         return $html;
     }
 
