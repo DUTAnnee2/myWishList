@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -28,7 +29,7 @@ $app->get('/participant',
 $app->post('/participant',
     function (Request $rq, Response $rs, $args): Response {
         $id = $_POST['id'];
-        $listl = \mywishlist\models\Liste::get("no", "=", $id);
+        $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
         $vue = new \mywishlist\views\VueParticipant($listl->toArray());
         $rs->getBody()->write($vue->render(2));
         return $rs;
