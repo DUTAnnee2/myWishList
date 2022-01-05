@@ -1,9 +1,9 @@
 <?php
 
 namespace mywishlist\models;
-class User extends Illuminate\Database\Eloquent\Model
+class User extends \Illuminate\Database\Eloquent\Model
 {
-    protected $table = 'account';
+    protected $table = 'user';
     protected $primaryKey = 'id';
     public $timestamps = false;
 
