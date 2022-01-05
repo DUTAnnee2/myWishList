@@ -95,7 +95,7 @@ HTML;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../web/css/main.css">
+    <link rel="stylesheet" href="/web/css/main.css">
     <title>MyWishList</title>
 </head>
 <body>
@@ -110,8 +110,8 @@ HTML;
 
     <main>
             <div class="form-container">
-            <form action="" method="get" class="id-form">
-                <input type="text" placeholder="ID de votre liste" class="form-input">
+            <form action="" method="post" class="id-form">
+                <input type="text" placeholder="ID de votre liste" class="form-input" name="id">
                 <input type="submit" value="CHERCHER" class="form-submit">
             </form>
         </div>
