@@ -102,7 +102,9 @@ HTML;
     <header>
         <nav class="container-large">
             <h1>
-                <span>My</span><span class="text-purple">WishList</span>
+                <a href="/index.php/participant">
+                    <span>My</span><span class="text-purple">WishList</span>
+                </a>
             </h1>
             <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
         </nav>
