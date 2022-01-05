@@ -33,13 +33,13 @@ class VueParticipant
         $html .= <<<HTML
 <div class="card-interraction-btns">
                     <a href="#" class="btn">
-                        <img src="../../web/icons/edit.svg" alt="edit icon">
+                        <img src="/web/icons/edit.svg" alt="edit icon">
                     </a>
                     <a href="#" class="btn">
-                        <img src="../../web/icons/delete.svg" alt="delete icon">
+                        <img src="/web/icons/delete.svg" alt="delete icon">
                     </a>
                     <a href="#" class="btn">
-                        <img src="../../web/icons/share.svg" alt="share icon">
+                        <img src="/web/icons/share.svg" alt="share icon">
                     </a>
                     
                 </div>
@@ -76,7 +76,7 @@ HTML;
         $html .= "<td>" . $item["nom"] . "</td>";
         $html .= "<td>" . $item["descr"] . "</td>";
         $html .= "<td>" . $item["tarif"] . "</td>";
-        $html .= "<td><img src='../../web/img/" . $item["img"] . "' alt='item' class='item-image'></td>";
+        $html .= "<td><img src='/web/img/" . $item["img"] . "' alt='item' class='item-image'></td>";
         $html .= "</tr>";
         return $html;
     }
@@ -104,7 +104,7 @@ HTML;
             <h1>
                 <span>My</span><span class="text-purple">WishList</span>
             </h1>
-            <img src="../../web/icons/user.svg" alt="user icon" class="user-icon">
+            <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
         </nav>
     </header>
 

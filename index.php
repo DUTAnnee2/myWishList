@@ -30,8 +30,7 @@ $app->post('/participant',
         $id = $_POST['id'];
         $listl = \mywishlist\models\Liste::get("no", "=", $id);
         $vue = new \mywishlist\views\VueParticipant($listl->toArray());
-        $rs->getBody()->write($id);
-        //return $rs->write($vue->render(2));
+        $rs->getBody()->write($vue->render(2));
         return $rs;
     });
 
