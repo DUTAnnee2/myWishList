@@ -27,7 +27,7 @@ HTML;
     public function renderHeader() : string
     {
         $user = "";
-        if ($_SESSION["userid"]) {
+        if (isset($_SESSION["userid"])) {
             $user=  "Bonjour, " . $_SESSION["username"]."!";
         }
 
