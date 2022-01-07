@@ -23,7 +23,7 @@ HTML;
             switch ($case)
             {
                 case 1:
-                    $render.=$form.$elements->renderFooter();
+                    $render.=$form;
 
                     break;
                 case 2:
