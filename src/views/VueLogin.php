@@ -13,7 +13,7 @@ class VueLogin
  <div class="form-container">
             <form action="" method="post" class="id-form">
                 <input type="text" placeholder="Login" class="form-input" name="login">
-                <input type="text" placeholder="Pswd" class="form-input" name="pwd">
+                <input type="password" placeholder="Pswd" class="form-input" name="pwd">
                 <input type="submit" value="LOGIN" class="form-submit">
             </form>
         </div>
