@@ -38,6 +38,12 @@ class UserController
          function getRender()
          {
              $oui = new \mywishlist\views\VueLogin();
+
+             if (isset($_SESSION["userid"])) {
+                 session_unset();
+
+                 return $oui->getRender(2);
+             }
              return $oui->getRender(1);
 
          }
