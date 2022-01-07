@@ -46,4 +46,23 @@ $app->get('/participant/3/:idItem',
         return $rs->write($vue->render(3));
     });
 
+
+$app->get('/login',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $oui = new \mywishlist\controllers\UserController();
+
+
+        return $rs->write($oui->getRender());
+    });
+
+$app->post('/login',
+    function (Request $rq, Response $rs, $args): Response {
+    $username = $_POST["login"];
+    $password = $_POST["pwd"];
+        $oui = new \mywishlist\controllers\UserController();
+
+
+        return $rs->write($oui->connectUser($username,$password));
+    });
 $app->run();
