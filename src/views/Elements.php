@@ -34,7 +34,9 @@ HTML;
                     <span>My</span><span class="text-purple">WishList</span>
                 </a>
             </h1>
-            <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
+            <a href="/index.php/login">
+                    <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
+            </a>
         </nav>
     </header>
     <main>
