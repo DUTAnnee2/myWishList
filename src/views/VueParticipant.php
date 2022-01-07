@@ -109,20 +109,8 @@ HTML;
                 $html .= $this->displayItem($this->list[0]);
         }
 
-        $html .= <<<HTML
-      </div>
-      </main>
-      <footer>
-        <nav class="container-large">
-            <h1>
-                <span>My</span><span class="text-purple">WishList</span>
-            </h1>
-        </nav>
-    </footer>
-    </body>
-    </html>
-    
-    HTML;
+        $html .= '<div/>';
+        $html .= $elements->renderFooter();
 
         return $html;
     }

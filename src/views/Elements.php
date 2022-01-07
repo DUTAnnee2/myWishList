@@ -56,4 +56,21 @@ HTML;
 
         return $html;
     }
+
+    public function renderFooter() : string
+    {
+        $html = <<<HTML
+      </main>
+      <footer>
+        <nav class="container-large">
+            <h1>
+                <span>My</span><span class="text-purple">WishList</span>
+            </h1>
+        </nav>
+    </footer>
+    </body>
+    </html>
+HTML;
+        return $html;
+    }
 }
