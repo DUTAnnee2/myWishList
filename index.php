@@ -16,34 +16,30 @@ $app = new Slim\App($container);
 
 $app->get('/participant',
     function (Request $rq, Response $rs, $args): Response {
+        $oui = new \mywishlist\controllers\ListController();
 
-        //display all cards
-        $listl = \mywishlist\models\Liste::all();
-        $vue = new \mywishlist\views\VueParticipant($listl->toArray());
 
-        return $rs->write($vue->render(1));
+        return $rs->write($oui->getList());
 
     });
 
 // Display a list with his ID
 $app->post('/participant',
     function (Request $rq, Response $rs, $args): Response {
-        $id = $_POST['id'];
-        $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
-        $vue = new \mywishlist\views\VueParticipant($listl->toArray());
-        $rs->getBody()->write($vue->render(2));
-        return $rs;
+        $oui = new \mywishlist\controllers\ListController();
+
+        return  $rs->write($oui->getList());
     });
 
 
 //display a specific item
-$app->get('/participant/3/:idItem',
+$app->get('/participant/item/{id}',
     function (Request $rq, Response $rs, $args): Response {
 
-        $listl = \mywishlist\models\Item::find(1);
-        $vue = new \mywishlist\views\VueParticipant([$listl]);
 
-        return $rs->write($vue->render(3));
+        $oui = new \mywishlist\controllers\ListController();
+
+        return $rs->write($oui->getItem($args["id"]));
     });
 
 
