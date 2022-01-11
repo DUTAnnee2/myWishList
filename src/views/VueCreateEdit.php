@@ -14,7 +14,7 @@ class VueCreateEdit
         $this->elements = new Elements();
     }
 
-    public function render() : string {
+    #[Pure] public function renderCreateList() : string {
         $html = $this->elements->renderHeaders() . $this->elements->renderHeader();
         $html .= <<<HTML
             <div class="form-container">
@@ -25,7 +25,37 @@ class VueCreateEdit
                         <label for="public">Cette liste est publique?</label>
                         <input type="checkbox" name="public" id="">
                     </div>
-                    <input type="submit" value="Créer une liste" class="form-submit">
+                    <input type="submit" value="Créer la liste" class="form-submit">
+                </form>
+            </div>
+
+HTML;
+
+        $html .= $this->elements->renderFooter();
+        return $html;
+    }
+
+    public function renderModifyList($liste) : string {
+        $liste = $liste[0];
+        $html = $this->elements->renderHeaders() . $this->elements->renderHeader();
+        $titre = $liste["titre"];
+        $desc = $liste["description"];
+        $checkbox = '<input type="checkbox" checked name="public">';
+        $id = $liste["no"];
+        if($liste["public"]==0)
+        {
+            $checkbox = '<input type="checkbox" name="public">';
+        }
+        $html .= <<<HTML
+            <div class="form-container">
+                <form method="post" class="create-modify-form">
+                    <input type="text" name="titre" placeholder="Titre de la liste" class="form-titre" value="$titre">
+                    <textarea name="description" placeholder="Description de la liste">$desc</textarea>
+                    <div class="puclic-check">
+                        <label for="public">Cette liste est publique?</label>
+                        $checkbox
+                    </div>
+                    <input type="submit" value="Modifier la liste" class="form-submit">
                 </form>
             </div>
 

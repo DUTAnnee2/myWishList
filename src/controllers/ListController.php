@@ -3,6 +3,7 @@
 namespace mywishlist\controllers;
 
 use mywishlist\models\Liste;
+use mywishlist\views\VueCreateEdit;
 
 class ListController
 {
@@ -48,8 +49,8 @@ class ListController
 
             if (!isset($_POST["titre"])) {
                 $listl = \mywishlist\models\Liste::where("no", "=", $listeid)->get()->toArray();
-                $vue = new \mywishlist\views\VueParticipant([$listl]);
-                return $vue->editList($listl);
+                $vue = new VueCreateEdit();
+                return $vue->renderModifyList($listl);
 
             } else {
                 $public = 0;
@@ -81,7 +82,7 @@ class ListController
         if(isset($_SESSION["userid"])) {
             if (!isset($_POST["titre"])) {
                 $vue = new \mywishlist\views\VueCreateEdit();
-                return $vue->render();
+                return $vue->renderCreateList();
 
             } else {
                 $public = 0;
