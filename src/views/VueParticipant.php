@@ -41,7 +41,7 @@ class VueParticipant
                 $html .= '<div class="card-description">';
                 $html .= "<p>" . $liste["description"] . "</p>";
                 $html .= '</div>';
-                if ($liste["userid"] == $_SESSION["userid"]) {
+                if ($liste["user_id"] == $_SESSION["userid"]) {
 
                     $html .= <<<HTML
 <div class="card-interraction-btns">
