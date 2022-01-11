@@ -35,12 +35,12 @@ HTML;
     <header>
         <nav class="container-large">
             <h1>
-                <a href="/index.php/participant">
+                <a href="/participant">
                     <span>My</span><span class="text-purple">WishList</span>
                 </a>
             </h1>
                     $user
-            <a href="/index.php/login">
+            <a href="/login">
                     <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
             </a>
         </nav>

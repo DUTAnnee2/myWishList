@@ -38,7 +38,7 @@ HTML;
                     $render.=$form;
                     break;
                 case 3 :
-                    $render.="<p>Vous avez été enregistré. Cliquez <a href='login'>ici</a> pour vous connecter</p>".$form;
+                    $render.="<p>Vous avez été enregistré. Cliquez <a href='/login'>ici</a> pour vous connecter</p>".$form;
                     break;
                 default:
                     $render.="<p>".$error."</p>".$form;
