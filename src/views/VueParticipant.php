@@ -21,16 +21,29 @@ class VueParticipant
      */
     private function displayListe($liste)
     {
-        $html = '<div class="card">';
-        $html .= "<h2>" . $liste["titre"] . "</h2>";
-        $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
-        $html .= "<h4>ID : " . $liste["no"] . "</h4>";
-        $html .= '<div class="card-description">';
-        $html .= "<p>" . $liste["description"] . "</p>";
-        $html .= '</div>';
 
+        $html = "";
+        if ($liste["public"] == 1) {
+            $html .= '<div class="card">';
+            $html .= "<h2>" . $liste["titre"] . "</h2>";
+            $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
+            $html .= "<h4>Liste publique</h4>";
+            $html .= '<div class="card-description">';
+            $html .= "<p>" . $liste["description"] . "</p>";
+            $html .= '</div>';
+        }
+        else {
+            if (isset($_SESSION["userid"])) {
+                $html .= '<div class="card">';
+                $html .= "<h2>" . $liste["titre"] . "</h2>";
+                $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
+                $html .= "<h4>ID : " . $liste["no"] . "</h4>";
+                $html .= '<div class="card-description">';
+                $html .= "<p>" . $liste["description"] . "</p>";
+                $html .= '</div>';
+                if ($liste["userid"] == $_SESSION["userid"]) {
 
-        $html .= <<<HTML
+                    $html .= <<<HTML
 <div class="card-interraction-btns">
                     <a href="#" class="btn">
                         <img src="/web/icons/edit.svg" alt="edit icon">
@@ -43,8 +56,13 @@ class VueParticipant
                     </a>
                     
                 </div>
-            </div>
 HTML;
+                }
+            }
+        }
+
+        $html .= "</div>";
+
         return $html;
 
     }
