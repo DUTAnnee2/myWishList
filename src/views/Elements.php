@@ -48,7 +48,7 @@ HTML;
                             <span>My</span><span class="text-purple">WishList</span>
                         </a>
                     </h1>
-                    $user
+                    <p>$user</p>
                     <a href="/login">
                             <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
                     </a>

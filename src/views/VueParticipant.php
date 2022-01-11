@@ -112,7 +112,6 @@ class VueParticipant
                 $html .= $this->displayItem($this->list[0]);
         }
 
-        $html .= '<div/>';
         $html .= $this->elements->renderFooter();
 
         return $html;
