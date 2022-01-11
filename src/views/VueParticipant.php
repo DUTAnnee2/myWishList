@@ -34,10 +34,13 @@ class VueParticipant
         }
         else {
             if (isset($_SESSION["userid"])) {
+
+                $id = $liste["no"];
+
                 $html .= '<div class="card">';
                 $html .= "<h2>" . $liste["titre"] . "</h2>";
                 $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
-                $html .= "<h4>ID : " . $liste["no"] . "</h4>";
+                $html .= "<h4>ID : " . $id . "</h4>";
                 $html .= '<div class="card-description">';
                 $html .= "<p>" . $liste["description"] . "</p>";
                 $html .= '</div>';
@@ -48,7 +51,7 @@ class VueParticipant
                     <a href="#" class="btn">
                         <img src="/web/icons/edit.svg" alt="edit icon">
                     </a>
-                    <a href="#" class="btn">
+                    <a href="/delete-list/$id" class="btn">
                         <img src="/web/icons/delete.svg" alt="delete icon">
                     </a>
                     <a href="#" class="btn">

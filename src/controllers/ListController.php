@@ -30,12 +30,14 @@ class ListController
 
        return $vue->render(3);
     }
-    function deleteListe($userid, $listeid)
+
+    function deleteListe($listeid)
     {
-        $listl = \mywishlist\models\Liste::where("no", "=", $listeid)->get();
-        if($listl["user_id"]==$userid)
-        {
-            \mywishlist\models\Liste::where("no", "=", $listeid)->delete();
+        if(isset($_SESSION["userid"])) {
+                $listl = \mywishlist\models\Liste::where([["no", "=", $listeid],["user_id", "=", $_SESSION["userid"]]])->delete();
+
         }
+        header("Location: /participant");
+        Exit();
     }
 }

@@ -80,4 +80,13 @@ $app->post('/register',
 
         return $rs->write($oui->getRegisterRender());
     });
+
+$app->get('/delete-list/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $oui = new \mywishlist\controllers\ListController();
+
+
+        return $rs->write("");
+    });
 $app->run();
