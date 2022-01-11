@@ -104,7 +104,7 @@ HTML;
     {
         return <<<HTML
             <div class="card-interraction-btns">
-                <a href="#" class="btn">
+                <a href="/edit-list/$id" class="btn">
                     <img src="/web/icons/edit.svg" alt="edit icon">
                 </a>
                 <a href="/delete-list/$id" class="btn">
