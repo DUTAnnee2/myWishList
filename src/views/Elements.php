@@ -85,9 +85,9 @@ HTML;
                 </main>
                     <footer>
                         <nav class="container-large">
-                            <h1>
+                            <h4>
                                 <span>My</span><span class="text-purple">WishList</span>
-                            </h1>
+                            </h4>
                         </nav>
                     </footer>
             </body>
