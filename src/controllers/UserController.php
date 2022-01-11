@@ -69,8 +69,7 @@ class UserController
 
                  if (sizeof($u) === 0 && sizeof($u1) === 0) {
 
-
-                     if (strlen(str_replace(" ", "", $login)) >= 5 && preg_match("^[a-zA-Z0-9.!#$%&'+/=?]^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$", $email) && strlen(str_replace(" ", "", $pwd)) > 5) {
+                     if (strlen(str_replace(" ", "", $login)) >= 5 && filter_var($email, FILTER_VALIDATE_EMAIL) && strlen(str_replace(" ", "", $pwd)) > 5) {
                          if ($pwd_c === $pwd) {
                              $user = new \mywishlist\models\User();
                              $id = \mywishlist\models\User::count() + 1;
