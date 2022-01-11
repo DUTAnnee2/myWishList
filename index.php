@@ -53,16 +53,35 @@ $app->get('/login',
         $oui = new \mywishlist\controllers\UserController();
 
 
-        return $rs->write($oui->getRender());
+        return $rs->write($oui->getLoginRender());
     });
 
 $app->post('/login',
     function (Request $rq, Response $rs, $args): Response {
-    $username = $_POST["login"];
-    $password = $_POST["pwd"];
+
         $oui = new \mywishlist\controllers\UserController();
 
 
-        return $rs->write($oui->connectUser($username,$password));
+        return $rs->write($oui->getLoginRender());
+    });
+
+
+$app->get('/register',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $oui = new \mywishlist\controllers\UserController();
+
+
+        return $rs->write($oui->getRegisterRender());
+    });
+
+//
+$app->post('/register',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $oui = new \mywishlist\controllers\UserController();
+
+
+        return $rs->write($oui->getRegisterRender());
     });
 $app->run();
