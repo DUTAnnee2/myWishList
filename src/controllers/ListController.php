@@ -77,5 +77,34 @@ class ListController
 
     }
 
+    public function createList() : string {
+        if(isset($_SESSION["userid"])) {
+            if (!isset($_POST["titre"])) {
+                $vue = new \mywishlist\views\VueCreateEdit();
+                return $vue->render();
+
+            } else {
+                $public = 0;
+                if(isset($_POST["public"]))
+                {
+                    $public=1;
+                }
+                $liste = new Liste();
+                $liste->user_id = $_SESSION["userid"];
+                $liste->titre = $_POST["titre"];
+                $liste->description = $_POST["description"];
+                $liste->public = $_POST["public"];
+
+                $liste->save();
+                header("Location: /participant");
+                Exit();
+            }
+        }
+        else {
+            header("Location: /login");
+            Exit();
+        }
+    }
+
 
 }

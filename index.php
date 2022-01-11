@@ -107,4 +107,18 @@ $app->post('/edit-list/{id}',
 
         return $rs->write($oui->editList($args["id"]));
     });
+
+$app->get('/create-list',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->createList());
+    });
+
+$app->post('/create-list',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->createList());
+    });
 $app->run();

@@ -101,6 +101,14 @@ class VueParticipant
                 foreach ($this->list as $l) {
                     $html .= $this->displayListe($l);
                 }
+                $html .= <<<HTML
+                    <div class="card-add">
+                        <a href="/create-list" class="btn">
+                            <img src="/web/icons/plus-circle.svg" alt="add icon">
+                        </a>
+                    </div>
+HTML;
+
                 break;
 
             case 2:

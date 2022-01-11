@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 20px;
 }
 
 .card {
@@ -10,6 +11,7 @@
     background-color: $color-base;
     max-width: 300px;
     min-width: 300px;
+    min-height: 300px;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
@@ -31,6 +33,26 @@
     h4 {
         font-weight: $extra-light;
         color: $color-purple;
+    }
+}
+
+.card-add {
+    margin-top: 100px;
+    background-color: $color-white;
+    max-width: 290px;
+    min-width: 290px;
+    min-height: 290px;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    border: 10px solid $color-base;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-width: 100px;
     }
 }
 
