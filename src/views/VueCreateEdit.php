@@ -35,7 +35,7 @@ HTML;
         return $html;
     }
 
-    public function renderModifyList($liste) : string {
+    #[Pure] public function renderModifyList($liste) : string {
         $liste = $liste[0];
         $html = $this->elements->renderHeaders() . $this->elements->renderHeader();
         $titre = $liste["titre"];
