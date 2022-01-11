@@ -23,6 +23,8 @@ class VueParticipant
     {
 
         $html = "";
+        $id = $liste["no"];
+
         if ($liste["public"] == 1) {
             $html .= '<div class="card">';
             $html .= "<h2>" . $liste["titre"] . "</h2>";
@@ -33,9 +35,6 @@ class VueParticipant
             $html .= '</div>';
         }
         else {
-            if (isset($_SESSION["userid"])) {
-
-                $id = $liste["no"];
 
                 $html .= '<div class="card">';
                 $html .= "<h2>" . $liste["titre"] . "</h2>";
@@ -44,11 +43,15 @@ class VueParticipant
                 $html .= '<div class="card-description">';
                 $html .= "<p>" . $liste["description"] . "</p>";
                 $html .= '</div>';
-                if ($liste["user_id"] == $_SESSION["userid"]) {
 
-                    $html .= <<<HTML
+        }
+        if (isset($_SESSION["userid"])) {
+
+            if ($liste["user_id"] == $_SESSION["userid"]) {
+
+                $html .= <<<HTML
 <div class="card-interraction-btns">
-                    <a href="#" class="btn">
+                    <a href="/edit-list/$id" class="btn">
                         <img src="/web/icons/edit.svg" alt="edit icon">
                     </a>
                     <a href="/delete-list/$id" class="btn">
@@ -60,10 +63,8 @@ class VueParticipant
                     
                 </div>
 HTML;
-                }
             }
         }
-
         $html .= "</div>";
 
         return $html;
@@ -133,6 +134,35 @@ HTML;
         $html .= '<div/>';
         $html .= $elements->renderFooter();
 
+        return $html;
+    }
+
+    function editList($liste)
+    {
+        $liste = $liste[0];
+        $elements = new Elements();
+        $html = $elements->renderHeaders();
+        $html .= $elements->renderHeader();
+        $titre = $liste["titre"];
+        $desc = $liste["description"];
+        $checkbox = '<input type="checkbox" checked name="public">';
+        $id = $liste["no"];
+        if($liste["public"]==0)
+        {
+            $checkbox = '<input type="checkbox" name="public">';
+        }
+        $form = <<<HTML
+ <div class="form-container">
+            <form action="" method="post" class="id-form">
+                <input type="text" placeholder="Titre" class="form-input" name="titre" value="$titre">
+                <textarea rows="5" name="desc">$desc</textarea>
+                <label for="public">Publique?</label>
+                $checkbox
+                <input type="submit" value="Modifier" class="form-submit">
+            </form>
+        </div>
+HTML;
+        $html .= $form. $elements->renderFooter();
         return $html;
     }
 

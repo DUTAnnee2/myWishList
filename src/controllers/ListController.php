@@ -40,4 +40,42 @@ class ListController
         header("Location: /participant");
         Exit();
     }
+
+    function editList($listeid)
+    {
+        if(isset($_SESSION["userid"])) {
+
+
+            if (!isset($_POST["titre"])) {
+                $listl = \mywishlist\models\Liste::where("no", "=", $listeid)->get()->toArray();
+                $vue = new \mywishlist\views\VueParticipant([$listl]);
+                return $vue->editList($listl);
+
+            } else {
+                $public = 0;
+                if(isset($_POST["public"]))
+                {
+                    $public=1;
+                }
+                $listl = \mywishlist\models\Liste::where([["no", "=", $listeid],["user_id", "=", $_SESSION["userid"]]])->update([
+                "titre" => $_POST["titre"],
+                "description" => $_POST["desc"],
+                    "public" => $public
+                ]);
+
+
+                header("Location: /participant");
+                Exit();
+            }
+        }
+        else
+        {
+            header("Location: /login");
+            Exit();
+
+        }
+
+    }
+
+
 }

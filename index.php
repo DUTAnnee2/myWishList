@@ -85,8 +85,26 @@ $app->get('/delete-list/{id}',
     function (Request $rq, Response $rs, $args): Response {
 
         $oui = new \mywishlist\controllers\ListController();
-
+        $oui->deleteListe($args["id"]);
 
         return $rs->write("");
+    });
+
+$app->get('/edit-list/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $oui = new \mywishlist\controllers\ListController();
+
+
+        return $rs->write($oui->editList($args["id"]));
+    });
+
+$app->post('/edit-list/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+
+        $oui = new \mywishlist\controllers\ListController();
+
+
+        return $rs->write($oui->editList($args["id"]));
     });
 $app->run();
