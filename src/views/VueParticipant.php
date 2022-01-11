@@ -1,17 +1,21 @@
 <?php
 //TD13
 namespace mywishlist\views;
+use JetBrains\PhpStorm\Pure;
+
 class VueParticipant
 {
     private $list;
+    private Elements $elements;
 
     /**
      * Classic constructor
      * @param $data
      */
-    public function __construct($data)
+    #[Pure] public function __construct($data)
     {
         $this->list = $data;
+        $this->elements = new Elements();
     }
 
     /**
@@ -19,50 +23,30 @@ class VueParticipant
      * @param $liste
      * @return string
      */
-    private function displayListe($liste)
+    #[Pure] private function displayListe($liste): string
     {
 
         $html = "";
         $id = $liste["no"];
 
+        $html .= '<div class="card">';
+        $html .= "<h2>" . $liste["titre"] . "</h2>";
+        $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
         if ($liste["public"] == 1) {
-            $html .= '<div class="card">';
-            $html .= "<h2>" . $liste["titre"] . "</h2>";
-            $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
             $html .= "<h4>Liste publique</h4>";
-            $html .= '<div class="card-description">';
-            $html .= "<p>" . $liste["description"] . "</p>";
-            $html .= '</div>';
         }
         else {
 
-                $html .= '<div class="card">';
-                $html .= "<h2>" . $liste["titre"] . "</h2>";
-                $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
-                $html .= "<h4>ID : " . $id . "</h4>";
-                $html .= '<div class="card-description">';
-                $html .= "<p>" . $liste["description"] . "</p>";
-                $html .= '</div>';
+            $html .= "<h4>ID : " . $id . "</h4>";
 
         }
+        $html .= '<div class="card-description">';
+        $html .= "<p>" . $liste["description"] . "</p>";
+        $html .= '</div>';
         if (isset($_SESSION["userid"])) {
 
             if ($liste["user_id"] == $_SESSION["userid"]) {
-
-                $html .= <<<HTML
-<div class="card-interraction-btns">
-                    <a href="/edit-list/$id" class="btn">
-                        <img src="/web/icons/edit.svg" alt="edit icon">
-                    </a>
-                    <a href="/delete-list/$id" class="btn">
-                        <img src="/web/icons/delete.svg" alt="delete icon">
-                    </a>
-                    <a href="#" class="btn">
-                        <img src="/web/icons/share.svg" alt="share icon">
-                    </a>
-                    
-                </div>
-HTML;
+                $html .= $this->elements->renderInterractionCardButtons($id);
             }
         }
         $html .= "</div>";
@@ -92,7 +76,7 @@ HTML;
      * @param $item
      * @return string
      */
-    private function displayItem($item)
+    private function displayItem($item): string
     {
         $html = "<tr>";
         $html .= "<td>" . $item["nom"] . "</td>";
@@ -108,12 +92,9 @@ HTML;
      * @param $type
      * @return string
      */
-    public function render($type)
+    public function render($type): string
     {
-        $elements = new Elements();
-        $html = $elements->renderHeaders();
-        $html .= $elements->renderHeader();
-        $html .= $elements->renderFormId();
+        $html = $this->elements->renderHeaders() . $this->elements->renderHeader() . $this->elements->renderFormId();
         $html .= '<div class="card-container container-large">';
         switch ($type) {
             case 1:
@@ -132,7 +113,7 @@ HTML;
         }
 
         $html .= '<div/>';
-        $html .= $elements->renderFooter();
+        $html .= $this->elements->renderFooter();
 
         return $html;
     }
@@ -140,9 +121,7 @@ HTML;
     function editList($liste)
     {
         $liste = $liste[0];
-        $elements = new Elements();
-        $html = $elements->renderHeaders();
-        $html .= $elements->renderHeader();
+        $html = $this->elements->renderHeaders() . $this->elements->renderHeader();
         $titre = $liste["titre"];
         $desc = $liste["description"];
         $checkbox = '<input type="checkbox" checked name="public">';
@@ -162,7 +141,7 @@ HTML;
             </form>
         </div>
 HTML;
-        $html .= $form. $elements->renderFooter();
+        $html .= $form. $this->elements->renderFooter();
         return $html;
     }
 
