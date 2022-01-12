@@ -60,7 +60,7 @@ class ListController
                 }
                 $listl = \mywishlist\models\Liste::where([["no", "=", $listeid],["user_id", "=", $_SESSION["userid"]]])->update([
                 "titre" => $_POST["titre"],
-                "description" => $_POST["desc"],
+                "description" => $_POST["description"],
                     "public" => $public
                 ]);
 
@@ -94,7 +94,7 @@ class ListController
                 $liste->user_id = $_SESSION["userid"];
                 $liste->titre = $_POST["titre"];
                 $liste->description = $_POST["description"];
-                $liste->public = $_POST["public"];
+                $liste->public = $public;
 
                 $liste->save();
                 header("Location: /participant");

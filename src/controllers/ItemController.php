@@ -1,8 +1,8 @@
 <?php
-namespace mywishlist\controllers;
-
-  use \mywishlist\models\Item as Item;
-
-  class ItemController{
-
-  }
+	namespace mywishlist\controllers;
+	
+	use \mywishlist\models\Item as Item;
+	
+	  class ItemController{
+	
+	  }
