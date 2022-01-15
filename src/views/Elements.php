@@ -69,7 +69,7 @@ HTML;
             <div class="form-container">
                 <form action="" method="post" class="id-form">
                     <input type="text" placeholder="ID de votre liste" class="form-input" name="id">
-                    <input type="submit" value="CHERCHER" class="form-submit">
+                    <input type="submit" value="AFFICHER" class="form-submit">
                 </form>
             </div>
 HTML;
