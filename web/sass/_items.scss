@@ -4,7 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 20px;
+    gap: 30px;
     padding-bottom: 20px;
 
     .item-card {
@@ -32,6 +32,21 @@
             height: 100px;
             //crop image
             object-fit: cover;
+        }
+    }
+    .item-add {
+        min-width: 400px;
+        min-height: 400px;
+        background-color: $color-white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        border: 10px solid $color-base;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        img {
+            max-width: 100px;
         }
     }
 }

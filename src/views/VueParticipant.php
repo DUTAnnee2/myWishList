@@ -62,12 +62,21 @@ class VueParticipant
      */
     private function displayListeItems($liste)
     {
-        $html = "";
+        $html = '<div class="item-cards-container">';
         $l = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
         foreach ($l as $item) {
             $html .= $this->displayItem($item);
         }
+        $html .= <<<HTML
+                    <div class="item-add">
+                        <a href="#" class="btn">
+                            <img src="/web/icons/plus-circle.svg" alt="add icon">
+                        </a>
+                    </div>
+HTML;
+        $html .= '</div>';
         return $html;
+
     }
 
     /**
@@ -81,10 +90,7 @@ class VueParticipant
         $description = $item["descr"];
         $tarif = $item["tarif"];
         $img = "/web/img/" . $item["img"];
-        $html = '<div class="item-cards-container">';
-        $html .= $this->elements->renderCardItem($name, $description, $tarif, $img);
-        $html .= '</div>';
-        return $html;
+        return $this->elements->renderCardItem($name, $description, $tarif, $img);
     }
 
     /**
