@@ -19,13 +19,18 @@ class VueLogin
         {
             $render = $this->elements->renderHeaders().$this->elements->renderHeader();
             $form = <<<HTML
- <div class="form-container">
-            <form action="" method="post" class="id-form">
-                <input type="text" placeholder="Login" class="form-input" name="login">
-                <input type="password" placeholder="Pswd" class="form-input" name="pwd">
-                <input type="submit" value="LOGIN" class="form-submit">
-            </form>
-        </div>
+                <div class="form-container">
+                    <form action="" method="post" class="login-form">
+                        <input type="email" name="login" id="" class="login-field" placeholder="email">
+                        <input type="password" name="pwd" id="" class="login-field" placeholder="Mot de passe">
+                        <input type="submit" value="Connexion" class="login-connexion">
+                    </form>
+                    <div>
+                        <p>Pas encore de compte?</p>
+                        <a href="/register" class="text-purple">Inscription</a>
+                    </div>
+                </div>
+                
 HTML;
 
 
