@@ -2,13 +2,22 @@
 
 namespace mywishlist\views;
 
+use JetBrains\PhpStorm\Pure;
+
 class VueLogin
 {
+
+    private Elements $elements;
+
         //Cas 1 : Pas connecté, 2 : Deja connecte, 3 : erreur
-        function getRender($case) : string
+    #[Pure] public function __construct()
+    {
+        $this->elements = new Elements();
+    }
+
+    #[Pure] function getLoginRender($case) : string
         {
-            $elements = new Elements();
-            $render = $elements->renderHeaders().$elements->renderHeader();
+            $render = $this->elements->renderHeaders().$this->elements->renderHeader();
             $form = <<<HTML
  <div class="form-container">
             <form action="" method="post" class="id-form">
@@ -44,6 +53,6 @@ HTML.$form;
                     break;
             }
 
-            return $render.$elements->renderFooter();
+            return $render.$this->elements->renderFooter();
         }
 }

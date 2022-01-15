@@ -16,109 +16,87 @@ $app = new Slim\App($container);
 
 $app->get('/participant',
     function (Request $rq, Response $rs, $args): Response {
-        $oui = new \mywishlist\controllers\ListController();
-
-
-        return $rs->write($oui->getList());
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->getList());
 
     });
 
 // Display a list with his ID
 $app->post('/participant',
     function (Request $rq, Response $rs, $args): Response {
-        $oui = new \mywishlist\controllers\ListController();
-
-        return  $rs->write($oui->getList());
+        $controller = new \mywishlist\controllers\ListController();
+        return  $rs->write($controller->getList());
     });
 
 
 //display a specific item
 $app->get('/participant/item/{id}',
     function (Request $rq, Response $rs, $args): Response {
-
-
-        $oui = new \mywishlist\controllers\ListController();
-
-        return $rs->write($oui->getItem($args["id"]));
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->getItem($args["id"]));
     });
 
 
 $app->get('/login',
     function (Request $rq, Response $rs, $args): Response {
-
-        $oui = new \mywishlist\controllers\UserController();
-
-
-        return $rs->write($oui->getLoginRender());
+        $controller = new \mywishlist\controllers\UserController();
+        return $rs->write($controller->getLoginRender());
     });
 
 $app->post('/login',
     function (Request $rq, Response $rs, $args): Response {
-
-        $oui = new \mywishlist\controllers\UserController();
-
-
-        return $rs->write($oui->getLoginRender());
+        $controller = new \mywishlist\controllers\UserController();
+        return $rs->write($controller->getLoginRender());
     });
 
 
 $app->get('/register',
     function (Request $rq, Response $rs, $args): Response {
 
-        $oui = new \mywishlist\controllers\UserController();
-
-
-        return $rs->write($oui->getRegisterRender());
+        $controller = new \mywishlist\controllers\UserController();
+        return $rs->write($controller->getRegisterRender());
     });
 
 //
 $app->post('/register',
     function (Request $rq, Response $rs, $args): Response {
-
-        $oui = new \mywishlist\controllers\UserController();
-
-
-        return $rs->write($oui->getRegisterRender());
+        $controller = new \mywishlist\controllers\UserController();
+        return $rs->write($controller->getRegisterRender());
     });
 
 $app->get('/delete-list/{id}',
     function (Request $rq, Response $rs, $args): Response {
-
-        $oui = new \mywishlist\controllers\ListController();
-        $oui->deleteListe($args["id"]);
-
+        $controller = new \mywishlist\controllers\ListController();
+        $controller->deleteListe($args["id"]);
         return $rs->write("");
     });
 
 $app->get('/edit-list/{id}',
     function (Request $rq, Response $rs, $args): Response {
-
-        $oui = new \mywishlist\controllers\ListController();
-
-
-        return $rs->write($oui->editList($args["id"]));
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->editList($args["id"]));
     });
 
 $app->post('/edit-list/{id}',
     function (Request $rq, Response $rs, $args): Response {
-
-        $oui = new \mywishlist\controllers\ListController();
-
-
-        return $rs->write($oui->editList($args["id"]));
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->editList($args["id"]));
     });
 
 $app->get('/create-list',
     function (Request $rq, Response $rs, $args): Response {
-
         $controller = new \mywishlist\controllers\ListController();
         return $rs->write($controller->createList());
     });
 
 $app->post('/create-list',
     function (Request $rq, Response $rs, $args): Response {
-
         $controller = new \mywishlist\controllers\ListController();
         return $rs->write($controller->createList());
     });
-$app->run();
+
+try {
+    $app->run();
+} catch (Throwable $e) {
+    echo $e->getMessage();
+}

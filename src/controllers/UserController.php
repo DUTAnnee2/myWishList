@@ -16,7 +16,7 @@ class UserController
 
             if(isset($_SESSION["userid"])) {
                 session_unset();
-                return $elements->getRender(2);
+                return $elements->getLoginRender(2);
             }
             if (isset($_POST["login"]) && isset($_POST["pwd"])) {
 
@@ -40,10 +40,10 @@ class UserController
             }
             else
             {
-                return $elements->getRender(1);
+                return $elements->getLoginRender(1);
             }
 
-            return $elements->getRender(3);
+            return $elements->getLoginRender(3);
         }
 
 
