@@ -24,21 +24,13 @@ class ListController
         }
     }
 
-    function getItem($id)
-    {
-        $listl = \mywishlist\models\Item::find($id);
-        $vue = new \mywishlist\views\VueParticipant([$listl]);
-
-       return $vue->render(3);
-    }
-
     function deleteListe($listeid)
     {
         if(isset($_SESSION["userid"])) {
                 $listl = \mywishlist\models\Liste::where([["no", "=", $listeid],["user_id", "=", $_SESSION["userid"]]])->delete();
 
         }
-        header("Location: /participant");
+        header("Location: /");
         Exit();
     }
 
@@ -65,7 +57,7 @@ class ListController
                 ]);
 
 
-                header("Location: /participant");
+                header("Location: /");
                 Exit();
             }
         }
@@ -97,7 +89,7 @@ class ListController
                 $liste->public = $public;
 
                 $liste->save();
-                header("Location: /participant");
+                header("Location: /");
                 Exit();
             }
         }

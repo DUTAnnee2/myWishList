@@ -14,7 +14,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 $container = new Slim\Container(['settings' => ['displayErrorDetails' => true]]);
 $app = new Slim\App($container);
 
-$app->get('/participant',
+$app->get('/',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ListController();
         return $rs->write($controller->getList());
@@ -22,7 +22,7 @@ $app->get('/participant',
     });
 
 // Display a list with his ID
-$app->post('/participant',
+$app->post('/',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ListController();
         return  $rs->write($controller->getList());
@@ -30,9 +30,9 @@ $app->post('/participant',
 
 
 //display a specific item
-$app->get('/participant/item/{id}',
+$app->get('/item/{id}',
     function (Request $rq, Response $rs, $args): Response {
-        $controller = new \mywishlist\controllers\ListController();
+        $controller = new \mywishlist\controllers\ItemController();
         return $rs->write($controller->getItem($args["id"]));
     });
 

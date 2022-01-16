@@ -123,7 +123,11 @@ HTML;
                 }
                 break;
             case 3:
+                $html .= '<div class="item-cards-container">';
+
                 $html .= $this->displayItem($this->list[0]);
+                $html .= '</div>';
+
         }
 
         $html .= $this->elements->renderFooter();

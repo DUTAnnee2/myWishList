@@ -44,7 +44,7 @@ HTML;
             <header>
                 <nav class="container-large">
                     <h1>
-                        <a href="/participant">
+                        <a href="/">
                             <span>My</span><span class="text-purple">WishList</span>
                         </a>
                     </h1>

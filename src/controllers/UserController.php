@@ -31,7 +31,7 @@ class UserController
                             $_SESSION["userid"] = $u[0]["user_id"];
                             $_SESSION["username"] = $u[0]["username"];
                             $_SESSION["email"] = $u[0]["email"];
-                            header("Location: /participant");
+                            header("Location: /");
                             Exit();
                         }
                     }
