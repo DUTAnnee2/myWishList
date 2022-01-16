@@ -72,8 +72,6 @@ class UserController
                      if (strlen(str_replace(" ", "", $login)) >= 5 && filter_var($email, FILTER_VALIDATE_EMAIL) && strlen(str_replace(" ", "", $pwd)) > 5) {
                          if ($pwd_c === $pwd) {
                              $user = new \mywishlist\models\User();
-                             $id = \mywishlist\models\User::count() + 1;
-                             $user->user_id = $id;
                              $user->username = $login;
                              $user->email = $email;
                              $user->password = password_hash($pwd, PASSWORD_DEFAULT);

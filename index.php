@@ -94,6 +94,11 @@ $app->post('/create-list',
         $controller = new \mywishlist\controllers\ListController();
         return $rs->write($controller->createList());
     });
+$app->get('/share/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ListController();
+        return $rs->write($controller->share($args["id"]));
+    });
 
 try {
     $app->run();

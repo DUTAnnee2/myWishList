@@ -134,4 +134,14 @@ HTML;
 
         return $html;
     }
+
+
+    public function shareRender($liste) : string{
+        $html = $this->elements->renderHeaders() . $this->elements->renderHeader() ;
+        $html .= "localhost:8000/liste/".$liste[0]["token"];
+
+        $html .= $this->elements->renderFooter();
+
+        return $html;
+    }
 }

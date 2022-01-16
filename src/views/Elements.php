@@ -110,7 +110,7 @@ HTML;
                 <a href="/delete-list/$id" class="btn">
                     <img src="/web/icons/delete.svg" alt="delete icon">
                 </a>
-                <a href="#" class="btn">
+                <a href="/share/$id" class="btn">
                     <img src="/web/icons/share.svg" alt="share icon">
                 </a>
             </div>

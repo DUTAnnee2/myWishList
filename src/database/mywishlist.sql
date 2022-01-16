@@ -55,7 +55,7 @@ INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `tok
 
 
 CREATE TABLE `user` (
-                        `user_id` int(5) NOT NULL,
+                        `user_id` int(5) NOT NULL  AUTO_INCREMENT,
                         `username` varchar(20) NOT NULL,
                         `email` varchar(255) NOT NULL,
                         `password` varchar(255) NOT NULL,

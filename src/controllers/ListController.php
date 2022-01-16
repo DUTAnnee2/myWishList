@@ -2,6 +2,7 @@
 
 namespace mywishlist\controllers;
 
+use http\Header;
 use mywishlist\models\Liste;
 use mywishlist\views\VueCreateEdit;
 
@@ -82,10 +83,14 @@ class ListController
                 {
                     $public=1;
                 }
+                //Genere token
+                $ne = \mywishlist\models\Liste::count() + 1;
+                $token = hash("ripemd128", $ne."".rand());
                 $liste = new Liste();
                 $liste->user_id = $_SESSION["userid"];
                 $liste->titre = $_POST["titre"];
                 $liste->description = $_POST["description"];
+                $liste->token = $token;
                 $liste->public = $public;
 
                 $liste->save();
@@ -97,6 +102,17 @@ class ListController
             header("Location: /login");
             Exit();
         }
+    }
+
+    public function share($id)
+    {
+        if(isset($_SESSION["userid"])){
+            $listl = \mywishlist\models\Liste::where([["no", "=", $id],["user_id", "=", $_SESSION["userid"]]])->get();
+            $vue = new \mywishlist\views\VueParticipant($listl->toArray());
+            return $vue->shareRender($listl);
+        }
+        header("Location: /login");
+        Exit();
     }
 
 
