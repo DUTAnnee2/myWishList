@@ -34,6 +34,16 @@
         font-weight: $extra-light;
         color: $color-purple;
     }
+    &:hover {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+        transition: box-shadow 0.5s ease 0s;
+
+    }
+
+    &:not(:hover) {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+        transition: box-shadow 0.5s ease 0s;
+    }
 }
 
 .card-add {
@@ -53,6 +63,16 @@
 
     img {
         max-width: 100px;
+    }
+    &:hover {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+        transition: box-shadow 0.5s ease 0s;
+
+    }
+
+    &:not(:hover) {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+        transition: box-shadow 0.5s ease 0s;
     }
 }
 

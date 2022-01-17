@@ -4,24 +4,6 @@
 /* == GLOBAL VARIABLES == */
 @import 'vars';
 
-/* == GLOBAL HEADER == */
-@import 'header';
-
-/* == GLOBAL LISTS == */
-@import 'lists';
-
-/* == GLOBAL CARDS == */
-@import 'cards';
-
-/* == GLOBAL FOOTER == */
-@import 'footer';
-
-/* == GLOBAL ITEMS == */
-@import 'items';
-
-/* == GLOBAL FORM == */
-@import 'forms';
-
 
 /* === GENERAL & RESET === */
 
@@ -90,3 +72,22 @@ main {
 .text-base {
     color: $color-base;
 }
+
+/* == GLOBAL HEADER == */
+@import 'header';
+
+/* == GLOBAL LISTS == */
+@import 'lists';
+
+/* == GLOBAL CARDS == */
+@import 'cards';
+
+/* == GLOBAL FOOTER == */
+@import 'footer';
+
+/* == GLOBAL ITEMS == */
+@import 'items';
+
+/* == GLOBAL FORM == */
+@import 'forms';
+

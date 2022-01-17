@@ -2,6 +2,77 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 /* == GLOBAL VARIABLES == */
 /* === FONT WEIGHT === */
+/* === GENERAL & RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  color: #FFF;
+}
+
+a, a:visited {
+  text-decoration: none;
+  decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F7F7F7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+/* === Containers === */
+.container-large {
+  max-width: 1600px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container-min {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/** == TEXT PURPLE COLORIZE == */
+.text-purple {
+  color: #A175E8;
+}
+
+.text-base {
+  color: #2C2C2C;
+}
+
 /* == GLOBAL HEADER == */
 header {
   background-color: #2C2C2C;
@@ -90,6 +161,24 @@ header nav .user-icon {
   color: #A175E8;
 }
 
+.card:hover {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
+}
+
+.card:not(:hover) {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
+}
+
 .card-add {
   margin-top: 100px;
   background-color: #FFF;
@@ -115,6 +204,24 @@ header nav .user-icon {
 
 .card-add img {
   max-width: 100px;
+}
+
+.card-add:hover {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
+}
+
+.card-add:not(:hover) {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
 }
 
 .card-description {
@@ -204,10 +311,21 @@ footer {
 }
 
 .item-cards-container .item-card:hover {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
+}
+
+.item-cards-container .item-card:not(:hover) {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
 }
 
 .item-cards-container .item-card .item-img {
@@ -238,6 +356,24 @@ footer {
 
 .item-cards-container .item-add img {
   max-width: 100px;
+}
+
+.item-cards-container .item-add:hover {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
+}
+
+.item-cards-container .item-add:not(:hover) {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
 }
 
 /* == GLOBAL FORM == */
@@ -426,74 +562,42 @@ footer {
   outline: none;
 }
 
-/* === GENERAL & RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  text-align: center;
-  color: #FFF;
+.form-container .login-form .form-submit-login {
+  padding: 5px 15px;
+  height: 50px;
+  width: 600px;
+  background: #A175E8;
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 5px 5px 5px 5px;
 }
 
-a, a:visited {
-  text-decoration: none;
-  decoration: none;
-  text-decoration: none;
-  color: inherit;
+.form-container:hover {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.705);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
 }
 
-strong {
-  font-weight: 600;
+.form-container:not(:hover) {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: -webkit-box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s;
+  transition: box-shadow 0.5s ease 0s, -webkit-box-shadow 0.5s ease 0s;
 }
 
-ol, ul {
-  list-style: none;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #F7F7F7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-/* === Containers === */
-.container-large {
-  max-width: 1600px;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.container-min {
-  max-width: 1000px;
-  width: 90%;
-  margin: 0 auto;
-}
-
-/** == TEXT PURPLE COLORIZE == */
-.text-purple {
+.form-message {
+  background-color: #2c2c2c;
+  padding: 10px;
   color: #A175E8;
-}
-
-.text-base {
-  color: #2C2C2C;
+  border-radius: 5px 5px 5px 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 20px auto;
 }
 /*# sourceMappingURL=main.css.map */
