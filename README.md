@@ -1,3 +1,3 @@
 # myWishList
 
-Projet PHP Bully-Cimbaluria / Francois / Pierron / Steiner
+Projet PHP Bully-Cimbaluria (TheRealEureka) / Francois (AurelienFrancoisUL) / Pierron (Azfouille) / Steiner (Unshade)
