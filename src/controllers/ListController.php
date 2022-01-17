@@ -24,7 +24,11 @@ class ListController
            return $vue->render(2);
         }
     }
-
+	function getListByToken($token) : string{
+		$listl = \mywishlist\models\Liste::where("token", "=", $token)->get();
+		$vue = new \mywishlist\views\VueParticipant($listl->toArray());
+		return $vue->render(2);
+	}
     function deleteListe($listeid)
     {
         if(isset($_SESSION["userid"])) {

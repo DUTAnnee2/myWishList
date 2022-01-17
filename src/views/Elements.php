@@ -36,8 +36,10 @@ HTML;
     public function renderHeader(): string
     {
         $user = "";
+		$login = "/login";
         if (isset($_SESSION["userid"])) {
             $user = "Bonjour, " . $_SESSION["username"] . "!";
+			$login="/user";
         }
 
         return <<<HTML
@@ -49,7 +51,7 @@ HTML;
                         </a>
                     </h1>
                     <p>$user</p>
-                    <a href="/login">
+                    <a href="$login">
                             <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
                     </a>
                 </nav>

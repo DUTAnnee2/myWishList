@@ -14,6 +14,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 $container = new Slim\Container(['settings' => ['displayErrorDetails' => true]]);
 $app = new Slim\App($container);
 
+//root
 $app->get('/',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ListController();
@@ -36,7 +37,7 @@ $app->get('/item/{id}',
         return $rs->write($controller->getItem($args["id"]));
     });
 
-
+//login
 $app->get('/login',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\UserController();
@@ -49,7 +50,7 @@ $app->post('/login',
         return $rs->write($controller->getLoginRender());
     });
 
-
+//register
 $app->get('/register',
     function (Request $rq, Response $rs, $args): Response {
 
@@ -64,6 +65,12 @@ $app->post('/register',
         return $rs->write($controller->getRegisterRender());
     });
 
+$app->get('/user',
+		function (Request $rq, Response $rs, $args): Response {
+			$controller = new \mywishlist\controllers\UserController();
+			return $rs->write($controller->getProfil());
+			
+		});
 $app->get('/delete-list/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ListController();
@@ -99,6 +106,12 @@ $app->get('/share/{id}',
         $controller = new \mywishlist\controllers\ListController();
         return $rs->write($controller->share($args["id"]));
     });
+	
+$app->get('/liste/{token}',
+		function (Request $rq, Response $rs, $args): Response {
+			$controller = new \mywishlist\controllers\ListController();
+			return $rs->write($controller->getListByToken($args["token"]));
+		});
 
 try {
     $app->run();

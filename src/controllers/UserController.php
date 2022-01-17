@@ -91,6 +91,16 @@ class UserController
 
              return $elements->getRender(1);
          }
-
+	function getProfil() :string
+	{
+		if(isset($_SESSION["userid"]))
+		{
+			$vue = new \mywishlist\views\VueProfil();
+			
+			return $vue->render();
+		}
+		header("Location: /login");
+		Exit();
+	}
 
 }
