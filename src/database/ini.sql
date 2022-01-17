@@ -28,7 +28,7 @@ CREATE TABLE `liste` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `user` (
-                        `user_id` int(5) NOT NULL,
+                        `user_id` int(5) NOT NULL AUTO_INCREMENT,
                         `username` varchar(20) NOT NULL,
                         `email` varchar(255) NOT NULL,
                         `password` varchar(255) NOT NULL,
