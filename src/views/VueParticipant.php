@@ -91,7 +91,13 @@ HTML;
         $name = $item["nom"];
         $description = $item["descr"];
         $tarif = $item["tarif"];
-        $img = "/web/img/" . $item["img"];
+        $urlimg = $item["img"];
+        if (str_contains($urlimg, 'http')) {
+            $img = $item["img"];
+        }
+        else {
+            $img = "/web/img/" . $item["img"];
+        }
         return $this->elements->renderCardItem($name, $description, $tarif, $img, $id);
     }
 

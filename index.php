@@ -126,6 +126,13 @@ $app->get('/edit-item/{id}',
         return $rs->write($controller->editItem($args["id"]));
     });
 
+$app->post('/edit-item/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ItemController();
+        $controller->saveEditedItem($args["id"]);
+        return $rs;
+    });
+
 try {
     $app->run();
 } catch (Throwable $e) {
