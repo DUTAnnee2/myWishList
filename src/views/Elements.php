@@ -119,7 +119,7 @@ HTML;
 HTML;
     }
 
-    public function renderCardItem($name, $description, $tarif, $img): string
+    public function renderCardItem($name, $description, $tarif, $img, $id): string
     {
         return <<<HTML
             <div class="item-card">
@@ -133,8 +133,17 @@ HTML;
                 <h5>
                     $tarif €
                 </h5>
+                <div class="card-interraction-btns">
+                    <a href="/edit-item/$id" class="btn">
+                        <img src="/web/icons/edit.svg" alt="edit icon">
+                    </a>
+                    <a href="/delete-item/$id" class="btn">
+                        <img src="/web/icons/delete.svg" alt="delete icon">
+                    </a>
+                </div>
             </div>
 HTML;
+
 
     }
 }

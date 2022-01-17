@@ -4,7 +4,7 @@ namespace mywishlist\controllers;
 
 use http\Header;
 use mywishlist\models\Liste;
-use mywishlist\views\VueCreateEdit;
+use mywishlist\views\VueCreateEditList;
 
 class ListController
 {
@@ -46,7 +46,7 @@ class ListController
 
             if (!isset($_POST["titre"])) {
                 $listl = \mywishlist\models\Liste::where("no", "=", $listeid)->get()->toArray();
-                $vue = new VueCreateEdit();
+                $vue = new VueCreateEditList();
                 return $vue->renderModifyList($listl);
 
             } else {
@@ -78,7 +78,7 @@ class ListController
     public function createList() : string {
         if(isset($_SESSION["userid"])) {
             if (!isset($_POST["titre"])) {
-                $vue = new \mywishlist\views\VueCreateEdit();
+                $vue = new \mywishlist\views\VueCreateEditList();
                 return $vue->renderCreateList();
 
             } else {

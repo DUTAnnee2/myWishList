@@ -4,7 +4,7 @@ namespace mywishlist\views;
 
 use JetBrains\PhpStorm\Pure;
 
-class VueCreateEdit
+class VueCreateEditList
 {
 
     private Elements $elements;

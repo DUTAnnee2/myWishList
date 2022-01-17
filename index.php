@@ -113,6 +113,19 @@ $app->get('/liste/{token}',
 			return $rs->write($controller->getListByToken($args["token"]));
 		});
 
+$app->get('/delete-item/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ItemController();
+        $controller->deleteItem($args["id"]);
+        return $rs->write("");
+    });
+
+$app->get('/edit-item/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ItemController();
+        return $rs->write($controller->editItem($args["id"]));
+    });
+
 try {
     $app->run();
 } catch (Throwable $e) {

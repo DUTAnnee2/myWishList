@@ -2,6 +2,7 @@
 //TD13
 namespace mywishlist\views;
 use JetBrains\PhpStorm\Pure;
+use mywishlist\models\Liste;
 
 class VueParticipant
 {
@@ -60,7 +61,7 @@ class VueParticipant
      * @param $liste
      * @return string
      */
-    private function displayListeItems($liste)
+    private function displayListeItems($liste): string
     {
         $html = '<div class="item-cards-container">';
         $l = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
@@ -84,13 +85,14 @@ HTML;
      * @param $item
      * @return string
      */
-    private function displayItem($item): string
+    #[Pure] private function displayItem($item): string
     {
+        $id = $item["id"];
         $name = $item["nom"];
         $description = $item["descr"];
         $tarif = $item["tarif"];
         $img = "/web/img/" . $item["img"];
-        return $this->elements->renderCardItem($name, $description, $tarif, $img);
+        return $this->elements->renderCardItem($name, $description, $tarif, $img, $id);
     }
 
     /**
@@ -136,7 +138,7 @@ HTML;
     }
 
 
-    public function shareRender($liste) : string{
+    #[Pure] public function shareRender($liste) : string{
         $html = $this->elements->renderHeaders() . $this->elements->renderHeader() ;
         $html .= "localhost:8000/liste/".$liste[0]["token"];
 
