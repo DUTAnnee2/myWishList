@@ -13,7 +13,7 @@ class Elements
      * Render the HTML headers
      * @return string The HTML headers
      */
-    public function renderHeaders(): string
+    public function renderHtmlHeaders(): string
     {
         return <<<HTML
             <!doctype html>
@@ -36,10 +36,10 @@ HTML;
     public function renderHeader(): string
     {
         $user = "";
-		$login = "/login";
+        $login = "/login";
         if (isset($_SESSION["userid"])) {
             $user = "Bonjour, " . $_SESSION["username"] . "!";
-			$login="/user";
+            $login = "/user";
         }
 
         return <<<HTML
@@ -52,7 +52,7 @@ HTML;
                     </h1>
                     <p>$user</p>
                     <a href="$login">
-                            <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
+                        <img src="/web/icons/user.svg" alt="user icon" class="user-icon">
                     </a>
                 </nav>
             </header>
@@ -102,7 +102,7 @@ HTML;
      * @param $id
      * @return string The HTML buttons to edit a list
      */
-    public function renderInterractionCardButtons($id): string
+    public function renderActionButtons($id): string
     {
         return <<<HTML
             <div class="card-interraction-btns">

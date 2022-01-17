@@ -133,6 +133,19 @@ $app->post('/edit-item/{id}',
         return $rs;
     });
 
+$app->get('/create_item/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ItemController();
+        return $rs->write($controller->createNewItem());
+    });
+
+$app->post('/create_item/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ItemController();
+        $controller->saveNewItem($args['id']);
+        return $rs;
+    });
+
 try {
     $app->run();
 } catch (Throwable $e) {

@@ -7,17 +7,17 @@ use JetBrains\PhpStorm\Pure;
 class VueRegister
 {
     //Cases : 1 : classique, 2 : erreur, 3 : succes
-        #[Pure] function getRender($case, $error="") : string {
-            $elements = new Elements();
-            $render = $elements->renderHeaders().$elements->renderHeader();
-            $login = "";
-            $email = "";
-            if(isset($_POST["login"]) && isset($_POST["email"]))
-            {
-                $login = $_POST["login"];
-                $email = $_POST["email"];
-            }
-            $form = <<<HTML
+    #[Pure] function getRender($case, $error = ""): string
+    {
+        $elements = new Elements();
+        $render = $elements->renderHtmlHeaders() . $elements->renderHeader();
+        $login = "";
+        $email = "";
+        if (isset($_POST["login"]) && isset($_POST["email"])) {
+            $login = $_POST["login"];
+            $email = $_POST["email"];
+        }
+        $form = <<<HTML
                 <div class="form-container">
                     <form action="" method="post" class="login-form">
                         <p>Mininimum 5 caractères</p>
@@ -32,13 +32,13 @@ class VueRegister
                 </div>
 HTML;
 
-            $render .= match ($case) {
-                1 => $form,
-                3 => "<div class='form-message'><p>Vous avez été enregistré. Cliquez <a href='/login'><span class='text-purple'>ici</span></a> pour vous connecter</p></div>" . $form,
-                default => "<p class='form-message'>" . $error . "</p>" . $form,
-            };
+        $render .= match ($case) {
+            1 => $form,
+            3 => "<div class='form-message'><p>Vous avez été enregistré. Cliquez <a href='/login'><span class='text-purple'>ici</span></a> pour vous connecter</p></div>" . $form,
+            default => "<p class='form-message'>" . $error . "</p>" . $form,
+        };
 
 
-            return $render.$elements->renderFooter();
-        }
+        return $render . $elements->renderFooter();
+    }
 }

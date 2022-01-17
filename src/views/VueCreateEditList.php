@@ -14,8 +14,9 @@ class VueCreateEditList
         $this->elements = new Elements();
     }
 
-    #[Pure] public function renderCreateList() : string {
-        $html = $this->elements->renderHeaders() . $this->elements->renderHeader();
+    #[Pure] public function renderCreateList(): string
+    {
+        $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
         $html .= <<<HTML
             <div class="form-container">
                 <form method="post" class="create-modify-form">
@@ -35,15 +36,15 @@ HTML;
         return $html;
     }
 
-    #[Pure] public function renderModifyList($liste) : string {
+    #[Pure] public function renderModifyList($liste): string
+    {
         $liste = $liste[0];
-        $html = $this->elements->renderHeaders() . $this->elements->renderHeader();
+        $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
         $titre = $liste["titre"];
         $desc = $liste["description"];
         $checkbox = '<input type="checkbox" checked name="public">';
         $id = $liste["no"];
-        if($liste["public"]==0)
-        {
+        if ($liste["public"] == 0) {
             $checkbox = '<input type="checkbox" name="public">';
         }
         $html .= <<<HTML

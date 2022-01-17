@@ -1,6 +1,7 @@
 <?php
 //TD13
 namespace mywishlist\views;
+
 use JetBrains\PhpStorm\Pure;
 use mywishlist\models\Liste;
 
@@ -35,8 +36,7 @@ class VueParticipant
         $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
         if ($liste["public"] == 1) {
             $html .= "<h4>Liste publique</h4>";
-        }
-        else {
+        } else {
 
             $html .= "<h4>ID : " . $id . "</h4>";
 
@@ -47,7 +47,7 @@ class VueParticipant
         if (isset($_SESSION["userid"])) {
 
             if ($liste["user_id"] == $_SESSION["userid"]) {
-                $html .= $this->elements->renderInterractionCardButtons($id);
+                $html .= $this->elements->renderActionButtons($id);
             }
         }
         $html .= "</div>";
@@ -70,7 +70,7 @@ class VueParticipant
         }
         $html .= <<<HTML
                     <div class="item-add">
-                        <a href="#" class="btn">
+                        <a href="/create_item" class="btn">
                             <img src="/web/icons/plus-circle.svg" alt="add icon">
                         </a>
                     </div>
@@ -94,8 +94,7 @@ HTML;
         $urlimg = $item["img"];
         if (str_contains($urlimg, 'http')) {
             $img = $item["img"];
-        }
-        else {
+        } else {
             $img = "/web/img/" . $item["img"];
         }
         return $this->elements->renderCardItem($name, $description, $tarif, $img, $id);
@@ -108,7 +107,7 @@ HTML;
      */
     public function render($type): string
     {
-        $html = $this->elements->renderHeaders() . $this->elements->renderHeader() . $this->elements->renderFormId();
+        $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader() . $this->elements->renderFormId();
         $html .= '<div class="card-container container-large">';
         switch ($type) {
             case 1:
@@ -144,9 +143,10 @@ HTML;
     }
 
 
-    #[Pure] public function shareRender($liste) : string{
-        $html = $this->elements->renderHeaders() . $this->elements->renderHeader() ;
-        $html .= "localhost:8000/liste/".$liste[0]["token"];
+    #[Pure] public function shareRender($liste): string
+    {
+        $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
+        $html .= "localhost:8000/liste/" . $liste[0]["token"];
 
         $html .= $this->elements->renderFooter();
 
