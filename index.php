@@ -23,7 +23,7 @@ $app->get('/',
     });
 
 // Display a list with his ID
-$app->post('/',
+$app->get('/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ListController();
         return  $rs->write($controller->getList());

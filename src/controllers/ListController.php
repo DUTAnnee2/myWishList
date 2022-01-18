@@ -8,15 +8,15 @@ use mywishlist\views\VueCreateEditList;
 
 class ListController
 {
-    function getList()
+    function getList(): string
     {
-        if (!isset($_POST['id'])) {
+        if (!isset($_GET['id'])) {
             //display all cards
             $listl = \mywishlist\models\Liste::all();
             $vue = new \mywishlist\views\VueParticipant($listl->toArray());
             return $vue->render(1);
         } else {
-            $id = $_POST['id'];
+            $id = $_GET['id'];
             $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
             $vue = new \mywishlist\views\VueParticipant($listl->toArray());
             return $vue->render(2);
