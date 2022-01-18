@@ -126,5 +126,12 @@ class ListController
         exit();
     }
 
+    public function getListClick($id): string
+    {
+        $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
+        $vue = new \mywishlist\views\VueListItem($listl->toArray());
+        return $vue->renderLists(2);
+    }
+
 
 }

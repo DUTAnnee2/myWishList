@@ -32,7 +32,7 @@ class VueListItem
         $id = $liste["no"];
 
         $html .= '<div class="card">';
-        $html .= "<h2>" . $liste["titre"] . "</h2>";
+        $html .= "<a href=". $id ."><h2>" . $liste["titre"] . "</h2></a>";
         $html .= "<h3>FIN : " . $liste["expiration"] . "</h3>";
         if ($liste["public"] == 1) {
             $html .= "<h4>Liste publique</h4>";

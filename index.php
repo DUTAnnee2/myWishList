@@ -135,7 +135,7 @@ $app->post('/create_item/{id}',
 	$app->get('/{id}',
 		function (Request $rq, Response $rs, $args): Response {
 			$controller = new \mywishlist\controllers\ListController();
-			return  $rs->write($controller->getList());
+			return  $rs->write($controller->getListClick($args["id"]));
 		});
 //root
 	$app->get('/',
