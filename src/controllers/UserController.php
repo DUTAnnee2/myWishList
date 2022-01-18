@@ -86,7 +86,10 @@ class UserController
         return $elements->getRender(1);
     }
 
-    function getProfil(): string
+    /**
+     * @return string
+     */
+    function getProfile(): string
     {
         if (isset($_SESSION["userid"])) {
             $vue = new \mywishlist\views\VueProfile();

@@ -57,7 +57,7 @@ $app->post('/register',
 $app->get('/user',
 		function (Request $rq, Response $rs, $args): Response {
 			$controller = new \mywishlist\controllers\UserController();
-			return $rs->write($controller->getProfil());
+			return $rs->write($controller->getProfile());
 			
 		});
 $app->get('/delete-list/{id}',

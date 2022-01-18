@@ -3,6 +3,7 @@
 namespace mywishlist\controllers;
 
 use http\Header;
+use JetBrains\PhpStorm\NoReturn;
 use mywishlist\models\Liste;
 use mywishlist\views\VueCreateEditList;
 
@@ -31,7 +32,11 @@ class ListController
         return $vue->renderLists(2);
     }
 
-    function deleteListe($listeid)
+    /**
+     * @param $listeid id of the list
+     * @return void
+     */
+    #[NoReturn] function deleteListe($listeid)
     {
         if (isset($_SESSION["userid"])) {
             $listl = \mywishlist\models\Liste::where([["no", "=", $listeid], ["user_id", "=", $_SESSION["userid"]]])->delete();
