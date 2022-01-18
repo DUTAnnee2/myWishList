@@ -14,20 +14,9 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 $container = new Slim\Container(['settings' => ['displayErrorDetails' => true]]);
 $app = new Slim\App($container);
 
-//root
-$app->get('/',
-    function (Request $rq, Response $rs, $args): Response {
-        $controller = new \mywishlist\controllers\ListController();
-        return $rs->write($controller->getList());
 
-    });
 
-// Display a list with his ID
-$app->get('/{id}',
-    function (Request $rq, Response $rs, $args): Response {
-        $controller = new \mywishlist\controllers\ListController();
-        return  $rs->write($controller->getList());
-    });
+
 
 
 //display a specific item
@@ -117,7 +106,6 @@ $app->get('/delete-item/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
         $controller->deleteItem($args["id"]);
-        return $rs->write("");
     });
 
 $app->get('/edit-item/{id}',
@@ -130,7 +118,6 @@ $app->post('/edit-item/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
         $controller->saveEditedItem($args["id"]);
-        return $rs;
     });
 
 $app->get('/create_item/{id}',
@@ -143,8 +130,20 @@ $app->post('/create_item/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
         $controller->saveNewItem($args['id']);
-        return $rs;
     });
+// Display a list with his ID
+	$app->get('/{id}',
+		function (Request $rq, Response $rs, $args): Response {
+			$controller = new \mywishlist\controllers\ListController();
+			return  $rs->write($controller->getList());
+		});
+//root
+	$app->get('/',
+		function (Request $rq, Response $rs, $args): Response {
+			$controller = new \mywishlist\controllers\ListController();
+			return $rs->write($controller->getList());
+			
+		});
 
 try {
     $app->run();
