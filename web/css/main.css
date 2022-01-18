@@ -396,6 +396,7 @@ footer {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .form-container a {
@@ -432,99 +433,6 @@ footer {
   border: 0 none;
   cursor: pointer;
   border-radius: 5px 5px 5px 5px;
-}
-
-.form-container .create-modify-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 20px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #ececec;
-  padding: 30px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-.form-container .create-modify-form .form-titre {
-  max-width: 200px;
-  background-color: #2b2b2b;
-  width: 100%;
-  height: 50px;
-  border: 1px solid #2b2b2b;
-  border-radius: 5px 5px 5px 5px;
-  padding: 0 10px;
-}
-
-.form-container .create-modify-form .form-titre:focus {
-  outline: none;
-}
-
-.form-container .create-modify-form .form-submit {
-  padding: 5px 15px;
-  background: #a175e8;
-  border: 0 none;
-  cursor: pointer;
-  border-radius: 5px 5px 5px 5px;
-}
-
-.form-container .create-modify-form .puclic-check {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 10px;
-  background-color: #2b2b2b;
-  padding: 20px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-.form-container .create-modify-form textarea {
-  margin-top: 10px;
-  width: 500px;
-  height: 100px;
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
-  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
-  -o-border-image: none;
-     border-image: none;
-  border-radius: 6px 6px 6px 6px;
-  border-style: none solid solid none;
-  border-width: medium 1px 1px medium;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
-  color: #555555;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1em;
-  line-height: 1.4em;
-  padding: 5px 8px;
-  -webkit-transition: background-color 0.2s ease 0s;
-  transition: background-color 0.2s ease 0s;
-}
-
-.form-container .create-modify-form textarea:focus {
-  background: none repeat scroll 0 0 #FFFFFF;
-  outline-width: 0;
 }
 
 .form-container .login-form {
