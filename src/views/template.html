@@ -18,15 +18,14 @@
     </header>
     <main>
         <div class="form-container">
-            <form action="" method="post" class="login-form">
-                <p>Mininimum 5 caractères</p>
-                <input type="text" placeholder="Login" class="login-field" name="login" value="$login">
-                <p>Mininimum 10 caractères</p>
-                <input type="email" placeholder="Email" class="login-field" name="email" value="$email">
-                <p>Mininimum 5 caractères</p>
-                <input type="password" placeholder="Password" class="login-field" name="pwd">
-                <input type="password" placeholder="Confirm password" class="login-field" name="pwd_c">
-                <input type="submit" value="REGISTER" class="form-submit-login">
+            <form method="post" class="login-form">
+                <input type="text" name="titre" placeholder="Titre de la liste" class="login-field">
+                <textarea name="description" placeholder="Description de la liste" class="login-field"></textarea>
+                <div class="login-field">
+                    <label for="public">Cette liste est publique?</label>
+                    <input type="checkbox" name="public" id="">
+                </div>
+                <input type="submit" value="Créer la liste" class="form-submit-login">
             </form>
         </div>
     </main>

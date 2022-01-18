@@ -19,14 +19,15 @@ class VueCreateEditList
         $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
         $html .= <<<HTML
             <div class="form-container">
-                <form method="post" class="create-modify-form">
-                    <input type="text" name="titre" placeholder="Titre de la liste" class="form-titre">
-                    <textarea name="description" placeholder="Description de la liste"></textarea>
-                    <div class="puclic-check">
+                <form method="post" class="login-form">
+                    <input type="text" name="titre" placeholder="Titre de la liste" class="login-field">
+                    <textarea name="description" placeholder="Description de la liste" class="login-field"></textarea>
+                    <input type="date" name="expiration" placeholder="Expiration" class="login-field" value="">
+                    <div class="login-field">
                         <label for="public">Cette liste est publique?</label>
                         <input type="checkbox" name="public" id="">
                     </div>
-                    <input type="submit" value="Créer la liste" class="form-submit">
+                    <input type="submit" value="Créer la liste" class="form-submit-login">
                 </form>
             </div>
 
@@ -40,6 +41,7 @@ HTML;
     {
         $liste = $liste[0];
         $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
+        $date = $liste['expiration'];
         $titre = $liste["titre"];
         $desc = $liste["description"];
         $checkbox = '<input type="checkbox" checked name="public">';
@@ -49,14 +51,15 @@ HTML;
         }
         $html .= <<<HTML
             <div class="form-container">
-                <form method="post" class="create-modify-form">
-                    <input type="text" name="titre" placeholder="Titre de la liste" class="form-titre" value="$titre">
-                    <textarea name="description" placeholder="Description de la liste">$desc</textarea>
-                    <div class="puclic-check">
+                <form method="post" class="login-form">
+                    <input type="text" name="titre" placeholder="Titre de la liste" class="login-field" value="$titre">
+                    <textarea name="description" placeholder="Expiration" class="login-field">$desc</textarea>
+                    <input type="date" name="expiration" placeholder="Titre de la liste" class="login-field" value="$date">
+                    <div class="login-field">
                         <label for="public">Cette liste est publique?</label>
                         $checkbox
                     </div>
-                    <input type="submit" value="Modifier la liste" class="form-submit">
+                    <input type="submit" value="Modifier la liste" class="form-submit-login">
                 </form>
             </div>
 

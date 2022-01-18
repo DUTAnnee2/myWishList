@@ -13,21 +13,22 @@ class ListController
         if (!isset($_GET['id'])) {
             //display all cards
             $listl = \mywishlist\models\Liste::all();
-            $vue = new \mywishlist\views\VueParticipant($listl->toArray());
-            return $vue->render(1);
+            $vue = new \mywishlist\views\VueListItem($listl->toArray());
+            return $vue->renderLists(1);
         } else {
             $id = $_GET['id'];
             $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
-            $vue = new \mywishlist\views\VueParticipant($listl->toArray());
-            return $vue->render(2);
+            $vue = new \mywishlist\views\VueListItem($listl->toArray());
+            return $vue->renderLists(2);
         }
     }
+
 
     function getListByToken($token): string
     {
         $listl = \mywishlist\models\Liste::where("token", "=", $token)->get();
-        $vue = new \mywishlist\views\VueParticipant($listl->toArray());
-        return $vue->render(2);
+        $vue = new \mywishlist\views\VueListItem($listl->toArray());
+        return $vue->renderLists(2);
     }
 
     function deleteListe($listeid)
@@ -58,7 +59,8 @@ class ListController
                 $listl = \mywishlist\models\Liste::where([["no", "=", $listeid], ["user_id", "=", $_SESSION["userid"]]])->update([
                     "titre" => $_POST["titre"],
                     "description" => $_POST["description"],
-                    "public" => $public
+                    "public" => $public,
+                    "expiration" => $_POST["expiration"]
                 ]);
 
 
@@ -89,6 +91,7 @@ class ListController
                 $ne = \mywishlist\models\Liste::count() + 1;
                 $token = hash("ripemd128", $ne . "" . rand());
                 $liste = new Liste();
+                $liste->expiration = $_POST["expiration"];
                 $liste->user_id = $_SESSION["userid"];
                 $liste->titre = $_POST["titre"];
                 $liste->description = $_POST["description"];
@@ -107,9 +110,11 @@ class ListController
 
     public function share($id)
     {
+
+
         if (isset($_SESSION["userid"])) {
             $listl = \mywishlist\models\Liste::where([["no", "=", $id], ["user_id", "=", $_SESSION["userid"]]])->get();
-            $vue = new \mywishlist\views\VueParticipant($listl->toArray());
+            $vue = new \mywishlist\views\VueListItem($listl->toArray());
             return $vue->shareRender($listl);
         }
         header("Location: /login");

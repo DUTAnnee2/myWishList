@@ -5,7 +5,7 @@ namespace mywishlist\views;
 use JetBrains\PhpStorm\Pure;
 use mywishlist\models\Liste;
 
-class VueParticipant
+class VueListItem
 {
     private $list;
     private Elements $elements;
@@ -61,7 +61,7 @@ class VueParticipant
      * @param $liste
      * @return string
      */
-    private function displayListeItems($liste): string
+    private function displayListsItems($liste): string
     {
         $html = '<div class="item-cards-container">';
         $l = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
@@ -105,7 +105,7 @@ HTML;
      * @param $type
      * @return string
      */
-    public function render($type): string
+    public function renderLists($type): string
     {
         $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader() . $this->elements->renderFormId();
         $html .= '<div class="card-container container-large">';
@@ -126,7 +126,7 @@ HTML;
 
             case 2:
                 foreach ($this->list as $l) {
-                    $html .= $this->displayListeItems($l);
+                    $html .= $this->displayListsItems($l);
                 }
                 break;
             case 3:
@@ -146,8 +146,7 @@ HTML;
     #[Pure] public function shareRender($liste): string
     {
         $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
-        $html .= "localhost:8000/liste/" . $liste[0]["token"];
-
+        $html .= "<div class='form-message'><p>localhost:8000/liste/" . $liste[0]["token"] . "</p></div>";
         $html .= $this->elements->renderFooter();
 
         return $html;

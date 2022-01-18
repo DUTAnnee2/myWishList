@@ -13,9 +13,9 @@ class ItemController
     function getItem($id): string
     {
         $listl = \mywishlist\models\Item::find($id);
-        $vue = new \mywishlist\views\VueParticipant([$listl]);
+        $vue = new \mywishlist\views\VueListItem([$listl]);
 
-        return $vue->render(3);
+        return $vue->renderLists(3);
     }
 
     #[NoReturn] function deleteItem($id)

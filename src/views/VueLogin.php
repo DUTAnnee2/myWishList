@@ -34,28 +34,19 @@ class VueLogin
 HTML;
 
 
-        switch ($case) {
-            case 1:
-                $render .= $form;
-
-                break;
-            case 2:
-                $render .= <<<HTML
-                <div class="">
-                <p>Vous avez été déconnecté</p>
+        $render .= match ($case) {
+            1 => $form,
+            2 => <<<HTML
+                <div class='form-message'>
+                    <p>Vous avez été déconnecté</p>
                 </div>
-HTML. $form;
-
-                break;
-            case 3:
-                $render .= <<<HTML
-                <div class="">
-                <p>Les informations transmises n'ont pas permis de vous authentifier.</p>
+HTML. $form,
+            3 => <<<HTML
+                <div class='form-message'>
+                    <p>Les informations transmises n'ont pas permis de vous authentifier.</p>
                 </div>
-HTML. $form;
-
-                break;
-        }
+HTML. $form,
+        };
 
         return $render . $this->elements->renderFooter();
     }
