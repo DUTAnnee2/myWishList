@@ -69,8 +69,8 @@ HTML;
     {
         return <<<HTML
             <div class="form-container">
-                <form action="" method="get" class="id-form">
-                    <input type="text" placeholder="ID de votre liste" class="form-input" name="id">
+                <form action="/" method="post" class="id-form">
+                    <input type="text" placeholder="ID de votre liste" class="form-input" name="redirect_id">
                     <input type="submit" value="AFFICHER" class="form-submit">
                 </form>
             </div>
@@ -119,7 +119,7 @@ HTML;
 HTML;
     }
 
-    public function renderCardItem($name, $description, $tarif, $img, $id): string
+    public function renderCardItem($name, $description, $tarif, $img, $id, $listid): string
     {
         return <<<HTML
             <div class="item-card">
@@ -134,10 +134,10 @@ HTML;
                     $tarif €
                 </h5>
                 <div class="card-interraction-btns">
-                    <a href="/edit-item/$id" class="btn">
+                    <a href="/edit-item/$listid/$id" class="btn">
                         <img src="/web/icons/edit.svg" alt="edit icon">
                     </a>
-                    <a href="/delete-item/$id" class="btn">
+                    <a href="/delete-item/$listid/$id" class="btn">
                         <img src="/web/icons/delete.svg" alt="delete icon">
                     </a>
                 </div>

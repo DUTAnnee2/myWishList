@@ -64,13 +64,14 @@ class VueListItem
     private function displayListsItems($liste): string
     {
         $html = '<div class="item-cards-container">';
-        $l = \mywishlist\models\Item::where('liste_id', "=", $liste["no"])->get()->toArray();
+		$id = $liste["no"];
+        $l = \mywishlist\models\Item::where('liste_id', "=", $id)->get()->toArray();
         foreach ($l as $item) {
             $html .= $this->displayItem($item);
         }
         $html .= <<<HTML
                     <div class="item-add">
-                        <a href="/create_item" class="btn">
+                        <a href="/create_item/$id" class="btn">
                             <img src="/web/icons/plus-circle.svg" alt="add icon">
                         </a>
                     </div>
@@ -97,7 +98,7 @@ HTML;
         } else {
             $img = "/web/img/" . $item["img"];
         }
-        return $this->elements->renderCardItem($name, $description, $tarif, $img, $id);
+        return $this->elements->renderCardItem($name, $description, $tarif, $img, $id, $item["liste_id"]);
     }
 
     /**
@@ -146,7 +147,7 @@ HTML;
     #[Pure] public function shareRender($liste): string
     {
         $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader();
-        $html .= "<div class='form-message'><p>localhost:8000/liste/" . $liste[0]["token"] . "</p></div>";
+        $html .= "<div class='form-message'><p>".$_SERVER['HTTP_HOST']."/liste/" . $liste[0]["token"] . "</p></div>";
         $html .= $this->elements->renderFooter();
 
         return $html;

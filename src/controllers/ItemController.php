@@ -18,11 +18,11 @@ class ItemController
         return $vue->renderLists(3);
     }
 
-    #[NoReturn] function deleteItem($id)
+    #[NoReturn] function deleteItem($listid,$id)
     {
         $item = \mywishlist\models\Item::find($id);
         $item->delete();
-        header('Location: /');
+        header('Location: /'.$listid);
         exit();
     }
 
@@ -30,10 +30,10 @@ class ItemController
     {
         $item = \mywishlist\models\Item::find($id);
         $vue = new \mywishlist\views\VueCreateEditItem();
-        return $vue->renderModifier($item->id);
+        return $vue->renderModifier($id);
     }
 
-    #[NoReturn] public function saveEditedItem(mixed $id)
+    #[NoReturn] public function saveEditedItem($listid, $id)
     {
         $item = \mywishlist\models\Item::find($id);
         $item->nom = $_POST['titre'];
@@ -41,7 +41,7 @@ class ItemController
         $item->img = $_POST['img'];
         $item->tarif = $_POST['price'];
         $item->save();
-        header('Location: /');
+        header('Location: /'.$listid);
         exit();
     }
 
@@ -51,16 +51,16 @@ class ItemController
         return $vue->renderCreateItem();
     }
 
-    #[NoReturn] public function saveNewItem($id)
+    #[NoReturn] public function saveNewItem($listid)
     {
         $item = new \mywishlist\models\Item;
-        $item->liste_id = $id;
+        $item->liste_id = $listid;
         $item->nom = $_POST['titre'];
         $item->descr = $_POST['description'];
         $item->img = $_POST['img'];
         $item->tarif = $_POST['price'];
         $item->save();
-        header('Location: /');
+        header('Location: /'.$listid);
         exit();
     }
 

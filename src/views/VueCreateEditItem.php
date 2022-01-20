@@ -48,7 +48,7 @@ HTML;
                     <input type="text" name="titre" id="" class="login-field" value="" placeholder="titre de l'item">
                     <textarea name="description" id="" cols="30" rows="10" class="login-field" placeholder="Description de l'item"></textarea>
                     <input type="number" name="price" id="" min="0" step="0.01" value="" class="login-field" placeholder="Prix de l'item">
-                    <input type="submit" value="Modifier" class="login-connexion">
+                    <input type="submit" value="Enregistrer" class="login-connexion">
                 </form>
             </div>
 HTML;

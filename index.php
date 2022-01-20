@@ -64,7 +64,6 @@ $app->get('/delete-list/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ListController();
         $controller->deleteListe($args["id"]);
-        return $rs->write("");
     });
 
 $app->get('/edit-list/{id}',
@@ -99,37 +98,38 @@ $app->get('/share/{id}',
 $app->get('/liste/{token}',
 		function (Request $rq, Response $rs, $args): Response {
 			$controller = new \mywishlist\controllers\ListController();
-			return $rs->write($controller->getListByToken($args["token"]));
+			$controller->getListByToken($args["token"]);
+			return $rs->write("");
 		});
 
-$app->get('/delete-item/{id}',
+$app->get('/delete-item/{listid}/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
-        $controller->deleteItem($args["id"]);
+        $controller->deleteItem($args['listid'],$args["id"]);
     });
 
-$app->get('/edit-item/{id}',
+$app->get('/edit-item/{listid}/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
-        return $rs->write($controller->editItem($args["id"]));
+        return $rs->write($controller->editItem($args['listid'],$args["id"]));
     });
 
-$app->post('/edit-item/{id}',
+$app->post('/edit-item/{listid}/{id}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
-        $controller->saveEditedItem($args["id"]);
+        $controller->saveEditedItem($args['listid'],$args["id"]);
     });
 
-$app->get('/create_item/{id}',
+$app->get('/create_item/{listid}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
         return $rs->write($controller->createNewItem());
     });
 
-$app->post('/create_item/{id}',
+$app->post('/create_item/{listid}',
     function (Request $rq, Response $rs, $args): Response {
         $controller = new \mywishlist\controllers\ItemController();
-        $controller->saveNewItem($args['id']);
+        $controller->saveNewItem($args['listid']);
     });
 // Display a list with his ID
 	$app->get('/{id}',
@@ -143,6 +143,12 @@ $app->post('/create_item/{id}',
 			$controller = new \mywishlist\controllers\ListController();
 			return $rs->write($controller->getList());
 			
+		});
+	$app->post('/',
+		function (Request $rq, Response $rs, $args): Response {
+			$controller = new \mywishlist\controllers\ListController();
+			$controller->redirect();
+			return $rs->write("");
 		});
 
 try {

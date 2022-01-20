@@ -25,15 +25,15 @@ class ListController
     }
 
 
-    function getListByToken($token): string
+    function getListByToken($token)
     {
         $listl = \mywishlist\models\Liste::where("token", "=", $token)->get();
-        $vue = new \mywishlist\views\VueListItem($listl->toArray());
-        return $vue->renderLists(2);
+		header("Location: /".$listl[0]["no"]);
+		exit();
     }
 
     /**
-     * @param $listeid id of the list
+     * @param $listeid "id of the list
      * @return void
      */
     #[NoReturn] function deleteListe($listeid)
@@ -123,7 +123,7 @@ class ListController
             return $vue->shareRender($listl);
         }
         header("Location: /login");
-        exit();
+        Exit();
     }
 
     public function getListClick($id): string
@@ -133,5 +133,13 @@ class ListController
         return $vue->renderLists(2);
     }
 
+	public function redirect()
+	{
+		if(isset($_POST["redirect_id"]))
+		{
+			header("Location: /".$_POST["redirect_id"]);
+			Exit();
+		}
+	}
 
 }
