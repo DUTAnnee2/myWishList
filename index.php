@@ -136,6 +136,11 @@ $app->get('/messages/{id}',
         $controller = new \mywishlist\controllers\MessageController();
         return  $rs->write($controller->getMessages($args["id"]));
     });
+$app->post('/messages/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\MessageController();
+        return  $rs->write($controller->postMessage($args["id"]));
+    });
 // Display a list with his ID
 	$app->get('/{id}',
 		function (Request $rq, Response $rs, $args): Response {
