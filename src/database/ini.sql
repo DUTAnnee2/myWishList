@@ -11,6 +11,7 @@ CREATE TABLE `item`
 (
     `id`       int(11) NOT NULL AUTO_INCREMENT,
     `liste_id` int(11) NOT NULL,
+    `reserv_id` int(11) DEFAULT NULL,
     `nom`      text NOT NULL,
     `descr`    text,
     `img`      text,
@@ -53,11 +54,3 @@ CREATE TABLE `message`
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `reservation`
-(
-    `user_id`  int(5) NOT NULL,
-    `item_id`  int(5) NOT NULL ,
-    `text` text COLLATE utf8_unicode_ci,
-    PRIMARY KEY (`user_id`,`item_id`)
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;

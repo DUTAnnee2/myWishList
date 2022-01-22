@@ -11,6 +11,7 @@ CREATE TABLE `item`
 (
     `id`       int(11) NOT NULL AUTO_INCREMENT,
     `liste_id` int(11) NOT NULL,
+    `reserv_id` int(11) DEFAULT NULL,
     `nom`      text NOT NULL,
     `descr`    text,
     `img`      text,
