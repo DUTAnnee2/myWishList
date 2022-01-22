@@ -109,9 +109,10 @@ HTML;
     public function renderLists($type): string
     {
         $html = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader() . $this->elements->renderFormId();
-        $html .= '<div class="card-container container-large">';
         switch ($type) {
             case 1:
+                $html .= '<div class="card-container container-large">';
+
                 foreach ($this->list as $l) {
                     $html .= $this->displayListe($l);
                 }
@@ -126,11 +127,20 @@ HTML;
                 break;
 
             case 2:
+                $id = $this->list[0]["no"];
+            $html .= <<<HTML
+            <a href="/messages/$id" class="msg-switch">Retour à la liste</a> 
+HTML;
+
+            $html .= '<div class="card-container container-large">';
+
                 foreach ($this->list as $l) {
                     $html .= $this->displayListsItems($l);
                 }
                 break;
             case 3:
+                $html .= '<div class="card-container container-large">';
+
                 $html .= '<div class="item-cards-container">';
 
                 $html .= $this->displayItem($this->list[0]);

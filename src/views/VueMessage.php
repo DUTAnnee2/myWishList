@@ -12,8 +12,13 @@ class VueMessage
         $this->elements = new Elements();
     }
 
-    function renderMessages($messages) :string{
-        $render = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader()."<div class='container-large'>";
+    function renderMessages($messages,$id) :string{
+        $render = $this->elements->renderHtmlHeaders() . $this->elements->renderHeader().<<<HTML
+            <a href="/$id" class="msg-switch">Retour à la liste</a>
+HTML;
+
+        $render .="<div class='container-large'>";
+
         foreach ($messages as $msg) {
         $render .= $this->displayMessage($msg);
     }

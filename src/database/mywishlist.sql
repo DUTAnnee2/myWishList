@@ -87,7 +87,7 @@ CREATE TABLE `message`
     `author_id`  int(5) NOT NULL ,
     `liste_id` int(5) NOT NULL,
     `text` text COLLATE utf8_unicode_ci,
-    `date` datetime NOT NULL,
+    `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`mess_id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
