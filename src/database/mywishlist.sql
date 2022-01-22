@@ -80,3 +80,23 @@ CREATE TABLE `user`
     PRIMARY KEY (`user_id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `message`
+(
+    `mess_id`  int(5) NOT NULL AUTO_INCREMENT,
+    `author_id`  int(5) NOT NULL ,
+    `liste_id` int(5) NOT NULL,
+    `text` text COLLATE utf8_unicode_ci,
+    `date` date NOT NULL,
+    PRIMARY KEY (`mess_id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `reservation`
+(
+    `user_id`  int(5) NOT NULL,
+    `item_id`  int(5) NOT NULL ,
+    `text` text COLLATE utf8_unicode_ci,
+    PRIMARY KEY (`user_id`,`item_id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
