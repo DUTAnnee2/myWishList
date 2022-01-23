@@ -114,19 +114,7 @@ HTML;
                 $html .= '<div class="card-container container-large">';
 
                 foreach ($this->list as $l) {
-                    if($l["public"]==1)
-                    {
-                        $html .= $this->displayListe($l);
-                    }
-                    else{
-                        if(isset($_SESSION["userid"]))
-                        {
-                            if($_SESSION["userid"]==$l["user_id"])
-                            {
-                                $html .= $this->displayListe($l);
-                            }
-                        }
-                    }
+                    $html .= $this->displayListe($l);
                 }
                 $html .= <<<HTML
                     <div class="card-add">
