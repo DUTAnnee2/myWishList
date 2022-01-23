@@ -34,7 +34,7 @@ class ItemController
      * @param $id int Item id
      * @return void Redirect to the modified list
      */
-    #[NoReturn] function deleteItem(int $listid, int $id) : void
+    #[NoReturn] function deleteItem(int $listid, int $id): void
     {
         $item = Item::find($id);
         $item->delete();
@@ -60,7 +60,7 @@ class ItemController
      * @param $id int Item id
      * @return void Redirect to the modified list
      */
-    #[NoReturn] public function saveEditedItem(int $listid, int $id) : void
+    #[NoReturn] public function saveEditedItem(int $listid, int $id): void
     {
         $item = Item::find($id);
         $this->listInformations($item, $listid);
@@ -105,14 +105,19 @@ class ItemController
         exit();
     }
 
-    function reserverItem($id){
-        if(isset($_SESSION["userid"]))
-        {
+    /**
+     * Reserve an item
+     * @param $id int Item id
+     * @return void Redirect to the modified list
+     */
+    function reserverItem(int $id): void
+    {
+        if (isset($_SESSION["userid"])) {
             $item = \mywishlist\models\Item::find($id);
-            $item->reserv_id =$_SESSION["userid"];
+            $item->reserv_id = $_SESSION["userid"];
             $item->save();
 
-            header('Location: /'.$item["liste_id"]);
+            header('Location: /' . $item["liste_id"]);
             exit();
         }
     }
