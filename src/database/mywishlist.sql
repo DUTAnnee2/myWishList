@@ -93,11 +93,3 @@ CREATE TABLE `message`
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `reservation`
-(
-    `user_id`  int(5) NOT NULL,
-    `item_id`  int(5) NOT NULL ,
-    `text` text COLLATE utf8_unicode_ci,
-    PRIMARY KEY (`user_id`,`item_id`)
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
