@@ -25,7 +25,11 @@ $app->get('/item/{id}',
         $controller = new \mywishlist\controllers\ItemController();
         return $rs->write($controller->getItem($args["id"]));
     });
-
+$app->get('/book-item/{id}',
+    function (Request $rq, Response $rs, $args): Response {
+        $controller = new \mywishlist\controllers\ItemController();
+        return $rs->write($controller->reserverItem($args["id"]));
+    });
 //login
 $app->get('/login',
     function (Request $rq, Response $rs, $args): Response {

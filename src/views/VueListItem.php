@@ -144,7 +144,13 @@ HTML;
                 }
                 break;
             case 3:
-                $html .= '<div class="card-container container-large">';
+                $id = $this->list[0]["id"];
+                if($this->list[0]["reserv_id"]==null) {
+                    $html .= <<<HTML
+        <a href="/book-item/$id" class="msg-switch" style="color:black">Réserver cet item</a>
+HTML;
+                }
+            $html .= '<div class="card-container container-large">';
 
                 $html .= '<div class="item-cards-container">';
 
