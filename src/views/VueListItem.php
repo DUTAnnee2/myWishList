@@ -64,7 +64,8 @@ class VueListItem
     private function displayListsItems($liste): string
     {
         $html = '<div class="item-cards-container">';
-		$id = $liste["no"];
+
+        $id = $liste["no"];
         $l = \mywishlist\models\Item::where('liste_id', "=", $id)->get()->toArray();
         foreach ($l as $item) {
             $html .= $this->displayItem($item);
@@ -114,7 +115,18 @@ HTML;
                 $html .= '<div class="card-container container-large">';
 
                 foreach ($this->list as $l) {
-                    $html .= $this->displayListe($l);
+                    if($l["public"]==1)
+                    {
+                        $html .= $this->displayListe($l);
+                    }
+                    else{
+                        if(isset($_SESSION["userid"])){
+                            if($_SESSION["userid"]==$l["user_id"])
+                            {
+                                $html .= $this->displayListe($l);
+                            }
+                        }
+                    }
                 }
                 $html .= <<<HTML
                     <div class="card-add">

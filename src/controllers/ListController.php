@@ -11,17 +11,11 @@ class ListController
 {
     function getList(): string
     {
-        if (!isset($_GET['id'])) {
             //display all cards
             $listl = \mywishlist\models\Liste::all();
             $vue = new \mywishlist\views\VueListItem($listl->toArray());
             return $vue->renderLists(1);
-        } else {
-            $id = $_GET['id'];
-            $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
-            $vue = new \mywishlist\views\VueListItem($listl->toArray());
-            return $vue->renderLists(2);
-        }
+
     }
 
 
