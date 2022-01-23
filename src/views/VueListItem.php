@@ -128,8 +128,13 @@ HTML;
 
             case 2:
                 $id = $this->list[0]["no"];
-            $html .= <<<HTML
+                $titre =  $this->list[0]["titre"];
+                $desc =  $this->list[0]["description"];
+
+                $html .= <<<HTML
             <a href="/messages/$id" class="msg-switch">Retour à la liste</a> 
+        <h1 style="color:black">$titre</h1>
+        <h4 style="color:black">$desc</h4>
 HTML;
 
             $html .= '<div class="card-container container-large">';
