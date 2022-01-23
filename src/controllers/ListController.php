@@ -11,17 +11,9 @@ class ListController
 {
     function getList(): string
     {
-        if (!isset($_GET['id'])) {
-            //display all cards
             $listl = \mywishlist\models\Liste::all();
             $vue = new \mywishlist\views\VueListItem($listl->toArray());
             return $vue->renderLists(1);
-        } else {
-            $id = $_GET['id'];
-            $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
-            $vue = new \mywishlist\views\VueListItem($listl->toArray());
-            return $vue->renderLists(2);
-        }
     }
 
 
@@ -126,11 +118,26 @@ class ListController
         Exit();
     }
 
-    public function getListClick($id): string
+    public function getListClick($id)
     {
+
         $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
-        $vue = new \mywishlist\views\VueListItem($listl->toArray());
-        return $vue->renderLists(2);
+        if($listl["public"]==1) {
+            $vue = new \mywishlist\views\VueListItem($listl->toArray());
+            return $vue->renderLists(2);
+        }
+        else{
+            if(isset($_SESSION["userid"]))
+            {
+                if($_SESSION["userid"]==$listl["user_id"])
+                {
+                    $vue = new \mywishlist\views\VueListItem($listl->toArray());
+                    return $vue->renderLists(2);
+                }
+            }
+        }
+        header("Location: /login");
+        Exit();
     }
 
 	public function redirect()
