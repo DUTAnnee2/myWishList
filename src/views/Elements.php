@@ -5,6 +5,10 @@ namespace mywishlist\views;
 
 /**
  * Class Elements, used to render the differents reusable elements of the website
+ * @package mywishlist\views
+ * @author 1shade
+ * @author Eureka
+ * @author Azflow
  */
 class Elements
 {
@@ -99,10 +103,10 @@ HTML;
 
     /**
      * Render the HTML buttons to edit a list
-     * @param $id
+     * @param $id int The ID of the list
      * @return string The HTML buttons to edit a list
      */
-    public function renderActionButtons($id): string
+    public function renderActionButtons(int $id): string
     {
         return <<<HTML
             <div class="card-interraction-btns">
@@ -119,7 +123,17 @@ HTML;
 HTML;
     }
 
-    public function renderCardItem($name, $description, $tarif, $img, $id, $listid): string
+    /**
+     * Render the HTML form to create an item card
+     * @param $name string The name of the item
+     * @param $description string The description of the item
+     * @param $tarif string The price of the item
+     * @param $img string The image of the item
+     * @param $id int The ID of the list
+     * @param $listid int The ID of the list
+     * @return string The HTML form to create an item card
+     */
+    public function renderCardItem(string $name, string $description, string $tarif, string $img, int $id, int $listid): string
     {
         return <<<HTML
             <div class="item-card">
