@@ -2,7 +2,14 @@
 
 namespace mywishlist\models;
 
-class item extends \Illuminate\Database\Eloquent\Model
+/**
+ * Class Item
+ * @package mywishlist\models
+ * @author 1shade
+ * @author Eureka
+ * @author Azflow
+ */
+class Item extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'item';
     protected $primaryKey = 'id';
