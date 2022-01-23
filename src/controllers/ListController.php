@@ -7,43 +7,36 @@ use JetBrains\PhpStorm\NoReturn;
 use mywishlist\models\Liste;
 use mywishlist\views\VueCreateEditList;
 
-/**
- * Class ListController
- * @author 1shade
- * @author Eureka
- * @package mywishlist\controllers
- */
 class ListController
 {
-    /**
-     * Get all lists
-     * @return string List view
-     */
     function getList(): string
     {
-        $listl = \mywishlist\models\Liste::all();
-        $vue = new \mywishlist\views\VueListItem($listl->toArray());
-        return $vue->renderLists(1);
+        if (!isset($_GET['id'])) {
+            //display all cards
+            $listl = \mywishlist\models\Liste::all();
+            $vue = new \mywishlist\views\VueListItem($listl->toArray());
+            return $vue->renderLists(1);
+        } else {
+            $id = $_GET['id'];
+            $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
+            $vue = new \mywishlist\views\VueListItem($listl->toArray());
+            return $vue->renderLists(2);
+        }
     }
 
 
-    /**
-     * Get a list by his token
-     * @param $token string Token of the list
-     * @return void Redirect to the list
-     */
-    #[NoReturn] function getListByToken(string $token): void
+    function getListByToken($token)
     {
         $listl = \mywishlist\models\Liste::where("token", "=", $token)->get();
-        header("Location: /" . $listl[0]["no"]);
-        exit();
+		header("Location: /".$listl[0]["no"]);
+		exit();
     }
 
     /**
-     * @param $listeid int id of the list
-     * @return void Redirect to the list
+     * @param $listeid "id of the list
+     * @return void
      */
-    #[NoReturn] function deleteListe(int $listeid): void
+    #[NoReturn] function deleteListe($listeid)
     {
         if (isset($_SESSION["userid"])) {
             $listl = \mywishlist\models\Liste::where([["no", "=", $listeid], ["user_id", "=", $_SESSION["userid"]]])->delete();
@@ -53,12 +46,7 @@ class ListController
         exit();
     }
 
-    /**
-     * Edit a specific list
-     * @param $listeid int id of the list
-     * @return string|void List view
-     */
-    function editList(int $listeid)
+    function editList($listeid)
     {
         if (isset($_SESSION["userid"])) {
 
@@ -92,10 +80,6 @@ class ListController
 
     }
 
-    /**
-     * Creta a new list
-     * @return string List view
-     */
     public function createList(): string
     {
         if (isset($_SESSION["userid"])) {
@@ -129,12 +113,7 @@ class ListController
         }
     }
 
-    /**
-     * Share a list
-     * @param $id int id of the list
-     * @return string|void
-     */
-    public function share(int $id)
+    public function share($id)
     {
 
 
@@ -144,43 +123,23 @@ class ListController
             return $vue->shareRender($listl);
         }
         header("Location: /login");
-        exit();
+        Exit();
     }
 
-    /**
-     * Display list items when we click on it
-     * @param $id int id of the list
-     * @return string|void
-     */
-    public function getListClick(int $id)
+    public function getListClick($id): string
     {
-
         $listl = \mywishlist\models\Liste::where("no", "=", $id)->get();
-        if ($listl["public"] == 1) {
-            $vue = new \mywishlist\views\VueListItem($listl->toArray());
-            return $vue->renderLists(2);
-        } else {
-            if (isset($_SESSION["userid"])) {
-                if ($_SESSION["userid"] == $listl["user_id"]) {
-                    $vue = new \mywishlist\views\VueListItem($listl->toArray());
-                    return $vue->renderLists(2);
-                }
-            }
-        }
-        header("Location: /login");
-        exit();
+        $vue = new \mywishlist\views\VueListItem($listl->toArray());
+        return $vue->renderLists(2);
     }
 
-    /**
-     * Redirect to the list
-     * @return void Redirect to the list
-     */
-    public function redirect(): void
-    {
-        if (isset($_POST["redirect_id"])) {
-            header("Location: /" . $_POST["redirect_id"]);
-            exit();
-        }
-    }
+	public function redirect()
+	{
+		if(isset($_POST["redirect_id"]))
+		{
+			header("Location: /".$_POST["redirect_id"]);
+			Exit();
+		}
+	}
 
 }
