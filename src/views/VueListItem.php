@@ -135,6 +135,7 @@ HTML;
                         </a>
                     </div>
 HTML;
+                $html .= '</div>';
 
                 break;
 
@@ -144,9 +145,10 @@ HTML;
                 $desc =  $this->list[0]["description"];
 
                 $html .= <<<HTML
-            <a href="/messages/$id" class="msg-switch">Retour à la liste</a> 
         <h1 style="color:black">$titre</h1>
-        <h4 style="color:black">$desc</h4>
+        <h4 style="color:black">$desc</h4><br>
+         <a href="/messages/$id" class="msg-switch">Messages de la liste</a> 
+
 HTML;
 
             $html .= '<div class="card-container container-large">';
@@ -154,21 +156,24 @@ HTML;
                 foreach ($this->list as $l) {
                     $html .= $this->displayListsItems($l);
                 }
+                $html .= '</div>';
+
                 break;
             case 3:
                 $id = $this->list[0]["id"];
-                if($this->list[0]["reserv_id"]==null) {
-                    $html .= <<<HTML
-        <a href="/book-item/$id" class="msg-switch" style="color:black">Réserver cet item</a>
-HTML;
-                }
+
             $html .= '<div class="card-container container-large">';
 
                 $html .= '<div class="item-cards-container">';
 
                 $html .= $this->displayItem($this->list[0]);
                 $html .= '</div>';
-
+                $html .= '</div>';
+                if($this->list[0]["reserv_id"]==null) {
+                    $html .= <<<HTML
+        <a href="/book-item/$id" class="msg-switch" >Réserver cet item</a>
+HTML;
+                }
         }
 
         $html .= $this->elements->renderFooter();

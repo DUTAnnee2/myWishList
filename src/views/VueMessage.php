@@ -17,11 +17,12 @@ class VueMessage
             <a href="/$id" class="msg-switch">Retour à la liste</a>
 HTML;
 
-        $render .="<div class='container-large'>";
+        $render .="<div class='message-container'>";
 
         foreach ($messages as $msg) {
         $render .= $this->displayMessage($msg);
     }
+        $render.="</div>";
         if(isset($_SESSION["userid"]))
         {
            $render.=<<<HTML
@@ -43,7 +44,7 @@ HTML;
         $text= $message["text"];
         $time = $message["date"];
         return <<<HTML
-                <div class="msg">
+                <div class="message">
                 <p><h1>$author</h1><h4>$time</h4></p><p>$text</p>
 </div>
 HTML;
