@@ -1,6 +1,6 @@
 # myWishList
 
-Projet PHP Bully-Cimbaluria (TheRealEureka) / Francois (AurelienFrancoisUL) / Pierron (Azfouille) / Steiner (Unshade)
+Projet PHP Bully-Cimbaluria Kévin (TheRealEureka) / Francois Aurélien (AurelienFrancoisUL) / Pierron Maxence (Azfouille) / Steiner Noé(Unshade)
 
 ## The project
 
@@ -55,6 +55,7 @@ CREATE TABLE `item`
 (
     `id`       int(11) NOT NULL AUTO_INCREMENT,
     `liste_id` int(11) NOT NULL,
+    `reserv_id` int(11) DEFAULT NULL,
     `nom`      text NOT NULL,
     `descr`    text,
     `img`      text,
@@ -76,6 +77,8 @@ CREATE TABLE `liste`
     PRIMARY KEY (`no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `user`;
+
 CREATE TABLE `user`
 (
     `user_id`  int(5) NOT NULL AUTO_INCREMENT,
@@ -85,6 +88,21 @@ CREATE TABLE `user`
     PRIMARY KEY (`user_id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `message`;
+
+CREATE TABLE `message`
+(
+    `mess_id`  int(5) NOT NULL AUTO_INCREMENT,
+    `author_id`  int(5) NOT NULL ,
+    `liste_id` int(5) NOT NULL,
+    `text` text COLLATE utf8_unicode_ci,
+    `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`mess_id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 ```
 
 ## Tech used
