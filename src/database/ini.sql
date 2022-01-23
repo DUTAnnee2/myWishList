@@ -33,6 +33,8 @@ CREATE TABLE `liste`
     PRIMARY KEY (`no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `user`;
+
 CREATE TABLE `user`
 (
     `user_id`  int(5) NOT NULL AUTO_INCREMENT,
@@ -42,6 +44,8 @@ CREATE TABLE `user`
     PRIMARY KEY (`user_id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `message`;
 
 CREATE TABLE `message`
 (

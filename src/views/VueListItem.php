@@ -114,7 +114,19 @@ HTML;
                 $html .= '<div class="card-container container-large">';
 
                 foreach ($this->list as $l) {
-                    $html .= $this->displayListe($l);
+                    if($l["public"]==1)
+                    {
+                        $html .= $this->displayListe($l);
+                    }
+                    else{
+                        if(isset($_SESSION["userid"]))
+                        {
+                            if($_SESSION["userid"]==$l["user_id"])
+                            {
+                                $html .= $this->displayListe($l);
+                            }
+                        }
+                    }
                 }
                 $html .= <<<HTML
                     <div class="card-add">
@@ -128,8 +140,13 @@ HTML;
 
             case 2:
                 $id = $this->list[0]["no"];
-            $html .= <<<HTML
+                $titre =  $this->list[0]["titre"];
+                $desc =  $this->list[0]["description"];
+
+                $html .= <<<HTML
             <a href="/messages/$id" class="msg-switch">Retour à la liste</a> 
+        <h1 style="color:black">$titre</h1>
+        <h4 style="color:black">$desc</h4>
 HTML;
 
             $html .= '<div class="card-container container-large">';
@@ -139,7 +156,13 @@ HTML;
                 }
                 break;
             case 3:
-                $html .= '<div class="card-container container-large">';
+                $id = $this->list[0]["id"];
+                if($this->list[0]["reserv_id"]==null) {
+                    $html .= <<<HTML
+        <a href="/book-item/$id" class="msg-switch" style="color:black">Réserver cet item</a>
+HTML;
+                }
+            $html .= '<div class="card-container container-large">';
 
                 $html .= '<div class="item-cards-container">';
 

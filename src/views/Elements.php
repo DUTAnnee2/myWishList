@@ -124,8 +124,9 @@ HTML;
         return <<<HTML
             <div class="item-card">
                 <img src="$img" alt="" srcset="" class="item-img">
-                <h3>
+                <h3><a href="/item/$id">
                     $name
+                    </a>
                 </h1>
                 <p>
                     $description             

@@ -105,4 +105,16 @@ class ItemController
         exit();
     }
 
+    function reserverItem($id){
+        if(isset($_SESSION["userid"]))
+        {
+            $item = \mywishlist\models\Item::find($id);
+            $item->reserv_id =$_SESSION["userid"];
+            $item->save();
+
+            header('Location: /'.$item["liste_id"]);
+            exit();
+        }
+    }
+
 }
