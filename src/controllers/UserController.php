@@ -2,10 +2,18 @@
 
 namespace mywishlist\controllers;
 
-
+/**
+ * Class UserController
+ * @package mywishlist\controllers
+ * @author 1shade
+ * @author Eureka
+ */
 class UserController
 {
-    //Login the user or display the form
+    /**
+     * Get the login form
+     * @return string The login form
+     */
     function getLoginRender(): string
     {
 
@@ -41,7 +49,10 @@ class UserController
     }
 
 
-    //Register user
+    /**
+     * Get the register form
+     * @return string The register form
+     */
     function getRegisterRender(): string
     {
 
@@ -87,7 +98,8 @@ class UserController
     }
 
     /**
-     * @return string
+     * Get the user profile
+     * @return string The profile view
      */
     function getProfile(): string
     {
